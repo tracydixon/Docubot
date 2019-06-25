@@ -1,0 +1,27 @@
+{
+  "name": "Docubot",
+  "description": "Documents RPA development.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.UIAutomation.Activities": "[19.5.0]",
+    "UiPath.System.Activities": "[19.5.0]",
+    "UiPath.Mail.Activities": "[1.5.0]",
+    "UiPath.Excel.Activities": "[2.6.1]"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "18.4.1.0",
+  "projectVersion": "1.0.0.0",
+  "runtimeOptions": {
+    "exceptionHandlerWorkflow": "Global_Handler.xaml",
+    "autoDispose": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ]
+  },
+  "projectType": "Workflow",
+  "libraryOptions": {
+    "includeOriginalXaml": false,
+    "privateWorkflows": []
+  }
+}

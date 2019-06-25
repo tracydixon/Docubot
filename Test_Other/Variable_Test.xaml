@@ -1,0 +1,11 @@
+﻿    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="retryCount" />
+      <Variable x:TypeArguments="x:String" Name="failedActivity" />
+      <Variable x:TypeArguments="x:Int32" Name="Max_Retries" />
+      <Variable x:TypeArguments="s:Exception" Name="TROUBLESHOOTING_exception" />
+      <Variable x:TypeArguments="x:String" Name="strExceptionDescription" />
+      <Variable x:TypeArguments="x:Int32" Name="intIndex" />
+      <Variable x:TypeArguments="x:String" Name="strScreenshotPath" />
+      <Variable x:TypeArguments="x:String" Name="strMessage" />
+    </Flowchart.Variables>
+ 

@@ -1,0 +1,531 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Dictionary_Calls" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Text" Type="InArgument(x:String)" />
+    <x:Property Name="drWorkflowRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="io_References" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>262,522</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Get_Dictionary_Calls_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="23">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="Description&#xA;xxx&#xA;&#xA;Pre-Condition&#xA;xxx&#xA;&#xA;Post-Condition&#xA;xxx&#xA;&#xA;Arguments&#xA;xxx&#xA;&#xA;Calls&#xA;xxx&#xA;&#xA;Called By&#xA;Process_File" DisplayName="Get_Dictionary_Calls" sap:VirtualizedContainerService.HintSize="222,442" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strCallToSeek" />
+      <Variable x:TypeArguments="x:String" Name="strDictName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Parallel DisplayName="Review references" sap:VirtualizedContainerService.HintSize="554,97" sap2010:WorkflowViewState.IdRef="Parallel_1">
+      <Sequence DisplayName="Review arguments" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="strArguments" />
+          <Variable x:TypeArguments="s:String[]" Name="arrArguments" />
+          <Variable x:TypeArguments="x:Boolean" Name="blInList" />
+          <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(of String)]" Name="lstArguments" />
+          <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(of String)]" Name="lstArgToSearch" />
+          <Variable x:TypeArguments="x:Int32" Name="intLookupIndex" />
+          <Variable x:TypeArguments="s:String[]" Name="arrLines" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence DisplayName="Create dict args to search for" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_39">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Assign argument row" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_105">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strArguments]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[drWorkflowRow("Arguments").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Remove argument header" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_106">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strArguments]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[strArguments.Replace("Arguments" + chr(13), "")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign argument array" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_107">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[arrArguments]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[strArguments.Split(chr(13))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ParallelForEach x:TypeArguments="x:String" DisplayName="Create search list of dict items" sap:VirtualizedContainerService.HintSize="287,208" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_14" Values="[arrArguments]">
+            <ActivityAction x:TypeArguments="x:String">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+              </ActivityAction.Argument>
+              <If Condition="[item.Contains(&quot;Dictionary&quot;)]" DisplayName="Add to search list" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_34">
+                <If.Then>
+                  <Sequence DisplayName="Shorten arg and add" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strArg" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign argument" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_113">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[strArg]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[left(item, instr(item, ",")-1)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <AddToCollection x:TypeArguments="x:String" Collection="[lstArgToSearch]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_15" Item="[strArg]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </ActivityAction>
+          </ParallelForEach>
+        </Sequence>
+        <If Condition="[lstArgToSearch.Count &gt; 0]" DisplayName="Get dictionary calls" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_4">
+          <If.Then>
+            <Sequence DisplayName="Get dictionary calls" sap:VirtualizedContainerService.HintSize="264,466" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Split text" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_108">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:String[]">[arrLines]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:String[]">[in_Text.Split(chr(13))]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ParallelForEach x:TypeArguments="x:String" DisplayName="Review each line" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_16" Values="[arrLines]">
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="line" />
+                  </ActivityAction.Argument>
+                  <ParallelForEach x:TypeArguments="x:String" DisplayName="Review all arguments" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_15" Values="[lstArgToSearch]">
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="arg" />
+                      </ActivityAction.Argument>
+                      <If Condition="[line.Contains(arg +&quot;(&quot;) AND (line.Contains(&quot;&lt;Variable&quot;) = FALSE) AND (line.Contains(&quot;x:Property&quot;) = FALSE)]" DisplayName="Get arg dictionary reference" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_38">
+                        <If.Then>
+                          <Sequence DisplayName="Get arg dictionary call" sap:VirtualizedContainerService.HintSize="264,537" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Int32" Name="intPosition" />
+                              <Variable x:TypeArguments="x:Int32" Name="intEndPosition" />
+                              <Variable x:TypeArguments="x:String" Name="strCall" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign first position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_114">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[intPosition]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[instr(line, arg + "(")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign end position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_115">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[intEndPosition]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[instr(intPosition + 1, line, ")")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign argument call" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_116">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[strCall]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[mid(line, intPosition, intEndPosition - intPosition + 1).Replace("&amp;quot;","""")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ExistsInCollection x:TypeArguments="x:String" Collection="[lstArguments]" DisplayName="Argument already there?" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="ExistsInCollection`1_13" Item="[strCall]" Result="[blInList]" />
+                            <If Condition="[blInList = FALSE]" DisplayName="Add new argument" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_37">
+                              <If.Then>
+                                <Parallel DisplayName="Log and add" sap:VirtualizedContainerService.HintSize="554,97" sap2010:WorkflowViewState.IdRef="Parallel_3">
+                                  <ui:LogMessage DisplayName="Log arg positions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Arg: &quot; + arg + chr(13) + &quot;intPosition: &quot; + intPosition.ToString + chr(13) + &quot;intEndPosition: &quot; + intEndPosition.ToString + chr(13) + &quot;in_Text: '&quot; + mid(in_Text, intPosition, intEndPosition - intPosition + 1) + &quot;'&quot;]" />
+                                  <AddToCollection x:TypeArguments="x:String" Collection="[lstArguments]" DisplayName="Add new argument" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="AddToCollection`1_17" Item="[strCall]" />
+                                </Parallel>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Then>
+                      </If>
+                    </ActivityAction>
+                  </ParallelForEach>
+                </ActivityAction>
+              </ParallelForEach>
+              <Assign DisplayName="Assign argument header" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Object">[drWorkflowRow("Arg_Dictionary_Calls")]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Object">["Argument Dictionary References" + chr(13)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[lstArguments.Count &gt; 0]" DisplayName="Sort and output list" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Then>
+                  <Sequence DisplayName="Sort and output list" sap:VirtualizedContainerService.HintSize="222,266" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="lstVariables.Sort" DisplayName="Sort argument list" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                      <ui:InvokeCode.Arguments>
+                        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="lstVariables">[lstArguments]</InOutArgument>
+                      </ui:InvokeCode.Arguments>
+                    </ui:InvokeCode>
+                    <ParallelForEach x:TypeArguments="x:String" DisplayName="Output all arguments" sap:VirtualizedContainerService.HintSize="287,208" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[lstArguments]">
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="arg" />
+                        </ActivityAction.Argument>
+                        <Parallel DisplayName="Output references" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_5">
+                          <Assign DisplayName="Add each argument" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_129">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[drWorkflowRow("Arg_Dictionary_Calls")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[drWorkflowRow("Arg_Dictionary_Calls").ToString + arg + chr(13)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Sequence DisplayName="Add unique refs" sap:VirtualizedContainerService.HintSize="222,237" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[io_References]" DisplayName="Lookup dictionary ref" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="References" LookupValue="[arg.ToString]" RowIndex="[intLookupIndex]" />
+                            <If Condition="[intLookupIndex &lt; 0]" DisplayName="Add reference" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_44">
+                              <If.Then>
+                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{arg}]" DataTable="[io_References]" DisplayName="Add each argument" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </Parallel>
+                      </ActivityAction>
+                    </ParallelForEach>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Assign DisplayName="Add each argument" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[drWorkflowRow("Arg_Dictionary_Calls")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[drWorkflowRow("Arg_Dictionary_Calls").ToString + "n/a" + chr(13)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+            </Sequence>
+          </If.Then>
+        </If>
+      </Sequence>
+      <Sequence DisplayName="Review variables" sap:VirtualizedContainerService.HintSize="222,266" sap2010:WorkflowViewState.IdRef="Sequence_53">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="strVariables" />
+          <Variable x:TypeArguments="s:String[]" Name="arrVariables" />
+          <Variable x:TypeArguments="x:Boolean" Name="blInList" />
+          <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(of String)]" Name="lstVariables" />
+          <Variable x:TypeArguments="scg:List(x:String)" Default="[New List(of String)]" Name="lstVarToSearch" />
+          <Variable x:TypeArguments="x:Int32" Name="intLookupIndex" />
+          <Variable x:TypeArguments="s:String[]" Name="arrLines" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Sequence DisplayName="Create dict args to search for" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_48">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Assign argument row" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_117">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strVariables]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[drWorkflowRow("Variables").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Remove argument header" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_118">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strVariables]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[strVariables.Replace("Variables" + chr(13), "")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign argument array" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_119">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[arrVariables]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[strVariables.Split(chr(13))]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ParallelForEach x:TypeArguments="x:String" DisplayName="Create search list of dict items" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_17" Values="[arrVariables]">
+            <ActivityAction x:TypeArguments="x:String">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+              </ActivityAction.Argument>
+              <If Condition="[item.Contains(&quot;Dictionary&quot;)]" DisplayName="Add to search list" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_39">
+                <If.Then>
+                  <Sequence DisplayName="Shorten arg and add" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strVar" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Assign argument" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_120">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[strVar]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[left(item, instr(item, ",")-1)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <AddToCollection x:TypeArguments="x:String" Collection="[lstVarToSearch]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_18" Item="[strVar]" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </ActivityAction>
+          </ParallelForEach>
+        </Sequence>
+        <If Condition="[lstVarToSearch.Count &gt; 0]" DisplayName="Get dictionary calls" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_43">
+          <If.Then>
+            <Sequence DisplayName="Get dictionary calls" sap:VirtualizedContainerService.HintSize="264,466" sap2010:WorkflowViewState.IdRef="Sequence_52">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="Split text" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_121">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:String[]">[arrLines]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:String[]">[in_Text.Split(chr(13))]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ParallelForEach x:TypeArguments="x:String" DisplayName="Review each line" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_19" Values="[arrLines]">
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="line" />
+                  </ActivityAction.Argument>
+                  <ParallelForEach x:TypeArguments="x:String" DisplayName="Review all arguments" sap:VirtualizedContainerService.HintSize="287,208" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_18" Values="[lstVarToSearch]">
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="arg" />
+                      </ActivityAction.Argument>
+                      <If Condition="[line.Contains(arg +&quot;(&quot;) AND (line.Contains(&quot;&lt;Variable&quot;) = FALSE) AND (line.Contains(&quot;x:Property&quot;) = FALSE)]" DisplayName="Get arg dictionary reference" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_41">
+                        <If.Then>
+                          <Sequence DisplayName="Get arg dictionary call" sap:VirtualizedContainerService.HintSize="264,537" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:Int32" Name="intPosition" />
+                              <Variable x:TypeArguments="x:Int32" Name="intEndPosition" />
+                              <Variable x:TypeArguments="x:String" Name="strCall" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="Assign first position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_122">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[intPosition]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[instr(line, arg + "(")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign end position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_123">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[intEndPosition]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[instr(intPosition + 1, line, ")")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign DisplayName="Assign argument call" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_124">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[strCall]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[mid(line, intPosition, intEndPosition - intPosition + 1).Replace("&amp;quot;","""")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ExistsInCollection x:TypeArguments="x:String" Collection="[lstVariables]" DisplayName="Argument already there?" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="ExistsInCollection`1_14" Item="[strCall]" Result="[blInList]" />
+                            <If Condition="[blInList = FALSE]" DisplayName="Add new argument" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_40">
+                              <If.Then>
+                                <Parallel DisplayName="Log and add" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_4">
+                                  <ui:LogMessage DisplayName="Log arg positions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Arg: &quot; + arg + chr(13) + &quot;intPosition: &quot; + intPosition.ToString + chr(13) + &quot;intEndPosition: &quot; + intEndPosition.ToString + chr(13) + &quot;in_Text: '&quot; + mid(in_Text, intPosition, intEndPosition - intPosition + 1) + &quot;'&quot;]" />
+                                  <AddToCollection x:TypeArguments="x:String" Collection="[lstVariables]" DisplayName="Add new argument" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="AddToCollection`1_19" Item="[strCall]" />
+                                </Parallel>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </If.Then>
+                      </If>
+                    </ActivityAction>
+                  </ParallelForEach>
+                </ActivityAction>
+              </ParallelForEach>
+              <Assign DisplayName="Assign argument header" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_125">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Object">[drWorkflowRow("Var_Dictionary_Calls")]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Object">["Variable Dictionary References" + chr(13)]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <If Condition="[lstVariables.Count &gt; 0]" DisplayName="Sort and output list" sap:VirtualizedContainerService.HintSize="467,208" sap2010:WorkflowViewState.IdRef="If_42">
+                <If.Then>
+                  <Sequence DisplayName="Sort and output list" sap:VirtualizedContainerService.HintSize="222,266" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="lstVariables.Sort" DisplayName="Sort argument list" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeCode_8">
+                      <ui:InvokeCode.Arguments>
+                        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="lstVariables">[lstVariables]</InOutArgument>
+                      </ui:InvokeCode.Arguments>
+                    </ui:InvokeCode>
+                    <ParallelForEach x:TypeArguments="x:String" DisplayName="Output all arguments" sap:VirtualizedContainerService.HintSize="287,208" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_20" Values="[lstVariables]">
+                      <ActivityAction x:TypeArguments="x:String">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="var" />
+                        </ActivityAction.Argument>
+                        <Parallel DisplayName="Output references" sap:VirtualizedContainerService.HintSize="596,106" sap2010:WorkflowViewState.IdRef="Parallel_6">
+                          <Assign DisplayName="Add each argument" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_130">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[drWorkflowRow("Var_Dictionary_Calls")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[drWorkflowRow("Var_Dictionary_Calls").ToString + var + chr(13)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Sequence DisplayName="Add unique refs" sap:VirtualizedContainerService.HintSize="222,237" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[io_References]" DisplayName="Lookup ref" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="References" LookupValue="[var.ToString]" RowIndex="[intLookupIndex]" />
+                            <If Condition="[intLookupIndex &lt; 0]" DisplayName="Add var reference" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_45">
+                              <If.Then>
+                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{var}]" DataTable="[io_References]" DisplayName="Add each var ref" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </Parallel>
+                      </ActivityAction>
+                    </ParallelForEach>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Assign DisplayName="Add each argument" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_128">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[drWorkflowRow("Var_Dictionary_Calls")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[drWorkflowRow("Var_Dictionary_Calls").ToString + "n/a" + chr(13)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Else>
+              </If>
+            </Sequence>
+          </If.Then>
+        </If>
+      </Sequence>
+    </Parallel>
+  </Sequence>
+</Activity>
