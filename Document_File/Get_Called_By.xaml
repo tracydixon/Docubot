@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>262,619</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>262,528</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Called_By_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -87,16 +87,17 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Get_Called_By" sap:VirtualizedContainerService.HintSize="222,539" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence DisplayName="Get_Called_By" sap:VirtualizedContainerService.HintSize="222,448" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strCriteria" />
       <Variable x:TypeArguments="x:Int32" Name="intRow" />
       <Variable x:TypeArguments="x:Int32" Name="intLookup" />
       <Variable x:TypeArguments="x:String" Name="strCalledByAll" />
-      <Variable x:TypeArguments="sd:DataTable" Name="tblTemp" />
+      <Variable x:TypeArguments="sd:DataTable" Name="tblCallsSorted" />
       <Variable x:TypeArguments="sd:DataTable" Name="TROUBLESHOOTING_master" />
       <Variable x:TypeArguments="sd:DataTable" Name="TROUBLESHOOTING_calls" />
       <Variable x:TypeArguments="sd:DataTable" Name="tblCalledBy" />
+      <Variable x:TypeArguments="sd:DataTable" Name="tblTempCalledBy" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -104,24 +105,23 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get_Called_By started.&quot;]" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_17">
-          <Assign DisplayName="TROUBLESHOOTING_master" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-            <Assign.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[TROUBLESHOOTING_master]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataTable">[io_MasterOutput]</InArgument>
-            </Assign.Value>
-          </Assign>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_18">
-          <Assign DisplayName="TROUBLESHOOTING_calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+    <ui:BuildDataTable DataTable="[tblCalledBy]" DisplayName="Create called by datatable" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;WorkflowFileName&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Called_By&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;      &lt;xs:unique name=&quot;Constraint1&quot;&gt;&#xA;        &lt;xs:selector xpath=&quot;.//TableName&quot; /&gt;&#xA;        &lt;xs:field xpath=&quot;WorkflowFileName&quot; /&gt;&#xA;      &lt;/xs:unique&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:BuildDataTable>
+    <If Condition="[io_Calls.Rows.Count &gt; 0]" DisplayName="Get called by info" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_18">
+      <If.Then>
+        <Sequence DisplayName="Get called by info" sap:VirtualizedContainerService.HintSize="264,379" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Assign TROUBLESHOOTING_calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_32">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[TROUBLESHOOTING_calls]</OutArgument>
             </Assign.To>
@@ -129,33 +129,15 @@
               <InArgument x:TypeArguments="sd:DataTable">[io_Calls]</InArgument>
             </Assign.Value>
           </Assign>
-        </Sequence>
-      </ui:CommentOut.Body>
-    </ui:CommentOut>
-    <If Condition="[io_Calls.Rows.Count &gt; 0]" DisplayName="Get called by info" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_18">
-      <If.Then>
-        <Sequence DisplayName="Get called by info" sap:VirtualizedContainerService.HintSize="222,328" sap2010:WorkflowViewState.IdRef="Sequence_16">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Calls" DataTable="[io_Calls]" DisplayName="Sort by Calls" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[io_Calls]">
+          <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" sap2010:Annotation.AnnotationText="The sorted table is called tblCallsSorted." ColumnName="Calls" DataTable="[io_Calls]" DisplayName="Sort by Calls" sap:VirtualizedContainerService.HintSize="242,64" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[tblCallsSorted]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:SortDataTable>
-          <ui:BuildDataTable DataTable="[tblCalledBy]" DisplayName="Create called by datatable" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;WorkflowFileName&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Called_By&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;      &lt;xs:unique name=&quot;Constraint1&quot;&gt;&#xA;        &lt;xs:selector xpath=&quot;.//TableName&quot; /&gt;&#xA;        &lt;xs:field xpath=&quot;WorkflowFileName&quot; /&gt;&#xA;      &lt;/xs:unique&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:BuildDataTable>
-          <ui:ForEachRow CurrentIndex="[intRow]" DataTable="[io_Calls]" DisplayName="Get called by field" sap:VirtualizedContainerService.HintSize="287,208" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+          <ui:ForEachRow CurrentIndex="[intRow]" DataTable="[tblCallsSorted]" DisplayName="Get called by field" sap:VirtualizedContainerService.HintSize="287,208" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
@@ -185,22 +167,22 @@
                         <InArgument x:TypeArguments="x:String">["Calls LIKE '%" + row("WorkflowName").ToString + "%'"]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <Assign DisplayName="Assign temp datatable" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+                    <Assign DisplayName="Assign tblTempCalledBy" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_33">
                       <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[tblTemp]</OutArgument>
+                        <OutArgument x:TypeArguments="sd:DataTable">[tblTempCalledBy]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="sd:DataTable">[io_Calls]</InArgument>
+                        <InArgument x:TypeArguments="sd:DataTable">[tblCallsSorted]</InArgument>
                       </Assign.Value>
                     </Assign>
                   </Parallel>
                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Select_Rows_by_Filter workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utilities\Select_Rows_by_Filter.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_SelectCriteria">[strCriteria]</InArgument>
-                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[tblTemp]</InOutArgument>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[tblTempCalledBy]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <If Condition="[tblTemp isNOT nothing]" DisplayName="Assign Called By" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_15">
+                  <If Condition="[tblTempCalledBy isNOT nothing]" DisplayName="Assign Called By" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_15">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -208,7 +190,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <ui:ForEachRow CurrentIndex="[intRow]" DataTable="[tblTemp]" DisplayName="Assign Called By field" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                      <ui:ForEachRow CurrentIndex="[intRow]" DataTable="[tblTempCalledBy]" DisplayName="Assign Called By field" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
@@ -237,13 +219,13 @@
                       </ui:ForEachRow>
                     </If.Then>
                   </If>
-                  <Sequence DisplayName="Add to master" sap:VirtualizedContainerService.HintSize="264,428" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <Sequence DisplayName="Add to master" sap:VirtualizedContainerService.HintSize="264,519" sap2010:WorkflowViewState.IdRef="Sequence_14">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[strCalledByAll = (&quot;Called By&quot; + chr(13))]" DisplayName="Update all calls with n/a" sap:VirtualizedContainerService.HintSize="464,206" sap2010:WorkflowViewState.IdRef="If_16">
+                    <If Condition="[strCalledByAll = (&quot;Called By&quot; + chr(13))]" DisplayName="Update all calls with n/a" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_16">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -289,6 +271,14 @@
                         <InArgument x:TypeArguments="x:Object">[strCalledByAll]</InArgument>
                       </Assign.Value>
                     </Assign>
+                    <If Condition="[len( trim(strCalledByAll.Replace(&quot;Called By&quot;,&quot;&quot;).Replace(chr(13),&quot;&quot;))) &gt; 0]" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_19">
+                      <If.Then>
+                        <ui:LogMessage DisplayName="Log called by" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[io_MasterOutput.rows(intLookup).Item(&quot;WorkflowName&quot;).ToString + &quot; is called by &quot; + trim(strCalledByAll.Replace(&quot;Called By&quot;,&quot;&quot;).Replace(chr(13),&quot;&quot;)) + &quot;.&quot;]" />
+                      </If.Then>
+                      <If.Else>
+                        <ui:LogMessage DisplayName="Log called by" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Warn" Message="[io_MasterOutput.rows(intLookup).Item(&quot;WorkflowName&quot;).ToString + &quot; is called by nothing.&quot;]" />
+                      </If.Else>
+                    </If>
                   </Sequence>
                 </Sequence>
               </ActivityAction>

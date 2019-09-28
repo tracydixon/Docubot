@@ -216,7 +216,6 @@
           </Sequence>
         </ActivityAction>
       </ParallelForEach>
-      <ui:LogMessage DisplayName="Log variables" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[io_WorkflowRow(&quot;Variables&quot;).ToString]" />
     </Sequence>
   </Sequence>
 </Activity>

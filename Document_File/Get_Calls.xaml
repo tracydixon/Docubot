@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Get_Calls" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Calls" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_Calls" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_Line" Type="InArgument(x:String)" />
@@ -110,13 +110,13 @@
           <av:Size x:Key="ShapeSize">200,51</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get calls" sap:VirtualizedContainerService.HintSize="264,730" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <Sequence DisplayName="Get calls" sap:VirtualizedContainerService.HintSize="222,539" sap2010:WorkflowViewState.IdRef="Sequence_21">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Parallel DisplayName="Assignment prep" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="Parallel_1">
+        <Parallel DisplayName="Assignment prep" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_1">
           <Assign DisplayName="TROUBLESHOOTING_line" sap:VirtualizedContainerService.HintSize="242,87" sap2010:WorkflowViewState.IdRef="Assign_52">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[TROUBLESHOOTING_line]</OutArgument>
@@ -138,97 +138,132 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,87" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                <ui:LogMessage DisplayName="Log line" sap:VirtualizedContainerService.HintSize="200,87" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[in_Line]" />
-              </Sequence>
-            </ui:CommentOut.Body>
-          </ui:CommentOut>
-          <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,87" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Get_Calls started.&quot;]" />
+          <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,87" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Get_Calls started for &quot; + in_WorkflowName +  &quot;.&quot;]" />
         </Parallel>
-        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-          <ui:CommentOut.Body>
-            <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_24">
-              <ui:LogMessage DisplayName="Log strCall" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[strCall]" />
-            </Sequence>
-          </ui:CommentOut.Body>
-        </ui:CommentOut>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Private: Invoke Trim_and_Remove_New_Lines workflow" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utilities\Trim_and_Remove_New_Lines.xaml">
-          <ui:InvokeWorkflowFile.Arguments>
-            <InOutArgument x:TypeArguments="x:String" x:Key="io_Data">[strCall]</InOutArgument>
-          </ui:InvokeWorkflowFile.Arguments>
-        </ui:InvokeWorkflowFile>
-        <Assign DisplayName="Assign duplicate table" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_47">
-          <Assign.To>
-            <OutArgument x:TypeArguments="sd:DataTable">[tblDuplicate]</OutArgument>
-          </Assign.To>
-          <Assign.Value>
-            <InArgument x:TypeArguments="sd:DataTable">[io_Calls]</InArgument>
-          </Assign.Value>
-        </Assign>
-        <If Condition="[tblDuplicate.Rows.Count &gt; 0]" DisplayName="Filter rows" sap:VirtualizedContainerService.HintSize="464,208" sap2010:WorkflowViewState.IdRef="If_6">
-          <If.Then>
-            <Sequence DisplayName="Add calls" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_27">
+        <Parallel DisplayName="Get calls table and trim call" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_2">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Private: Invoke Trim_and_Remove_New_Lines workflow" sap:VirtualizedContainerService.HintSize="200,60" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Utilities\Trim_and_Remove_New_Lines.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="x:String" x:Key="io_Data">[strCall]</InOutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+          <Assign DisplayName="Assign duplicate table" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[tblDuplicate]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[io_Calls]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Parallel>
+        <TryCatch DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="418,287" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch.Try>
+            <Parallel DisplayName="Add and log" sap:VirtualizedContainerService.HintSize="554,110" sap2010:WorkflowViewState.IdRef="Parallel_3">
+              <ui:LogMessage DisplayName="Log calls" sap:VirtualizedContainerService.HintSize="200,64" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[in_WorkflowName + &quot; calls &quot; + strCall + &quot;.&quot;]" />
+              <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Fields are workflow_name, calls." ArrayRow="[{in_WorkflowName, strCall}]" DataTable="[io_Calls]" DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="200,64" sap2010:WorkflowViewState.IdRef="AddDataRow_13">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:AddDataRow>
+            </Parallel>
+          </TryCatch.Try>
+          <TryCatch.Catches>
+            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get identical matching row." DisplayName="Invoke Select_Rows_by_Filter workflow" sap:VirtualizedContainerService.HintSize="200,78" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Utilities\Select_Rows_by_Filter.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_SelectCriteria">["WorkflowName = '" + in_WorkflowName + "' AND Calls = '" + strCall + "'"]</InArgument>
-                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[tblDuplicate]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-              <If sap2010:Annotation.AnnotationText="TRUE = there are no rows retrieved, so add the call to the table.&#xA;&#xA;FALSE = there is an existing call, so do not add to calls table." Condition="[tblDuplicate is Nothing]" DisplayName="Add calls" sap:VirtualizedContainerService.HintSize="200,168" sap2010:WorkflowViewState.IdRef="If_7">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
+              <ActivityAction x:TypeArguments="s:Exception">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                </ActivityAction.Argument>
+              </ActivityAction>
+            </Catch>
+          </TryCatch.Catches>
+        </TryCatch>
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <If Condition="[tblDuplicate.Rows.Count = 0]" DisplayName="Filter rows" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_6">
                 <If.Then>
-                  <Sequence DisplayName="Add calls and log" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <Sequence DisplayName="Add calls" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_27">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Fields are workflow_name, calls." ArrayRow="[{in_WorkflowName, strCall}]" DataTable="[io_Calls]" DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="242,64" sap2010:WorkflowViewState.IdRef="AddDataRow_11">
+                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get identical matching row." DisplayName="Invoke Select_Rows_by_Filter workflow" sap:VirtualizedContainerService.HintSize="200,78" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Utilities\Select_Rows_by_Filter.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_SelectCriteria">["WorkflowName = '" + in_WorkflowName + "' AND Calls = '" + strCall + "'"]</InArgument>
+                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[tblDuplicate]</InOutArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:AddDataRow>
-                    <ui:LogMessage DisplayName="Log add" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;Added to calls table: &quot; + in_WorkflowName +&quot;, &quot; + strCall]" />
-                    <Assign DisplayName="TROUBLESHOOTING_calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_54">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[TROUBLESHOOTING_calls]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="sd:DataTable">[io_Calls]</InArgument>
-                      </Assign.Value>
-                    </Assign>
+                    </ui:InvokeWorkflowFile>
+                    <If sap2010:Annotation.AnnotationText="TRUE = there are no rows retrieved, so add the call to the table.&#xA;&#xA;FALSE = there is an existing call, so do not add to calls table." Condition="[tblDuplicate is Nothing]" DisplayName="Add calls" sap:VirtualizedContainerService.HintSize="200,168" sap2010:WorkflowViewState.IdRef="If_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="Add calls and log" sap:VirtualizedContainerService.HintSize="264,366" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                            <TryCatch.Try>
+                              <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Fields are workflow_name, calls." ArrayRow="[{in_WorkflowName, strCall}]" DataTable="[io_Calls]" DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="200,64" sap2010:WorkflowViewState.IdRef="AddDataRow_11">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:AddDataRow>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="s:Exception">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                  </ActivityAction.Argument>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                          <ui:LogMessage DisplayName="Log call" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Warn" Message="[in_WorkflowName + &quot; calls &quot; + strCall + &quot;.&quot;]" />
+                          <Assign DisplayName="TROUBLESHOOTING_calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="sd:DataTable">[TROUBLESHOOTING_calls]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="sd:DataTable">[io_Calls]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                    </If>
                   </Sequence>
                 </If.Then>
               </If>
             </Sequence>
-          </If.Then>
-        </If>
-        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-          <ui:CommentOut.Body>
-            <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_25">
-              <ui:LogMessage DisplayName="Log existing rows" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Are there duplicates for : &quot; + in_WorkflowName + &quot;, &quot; + strCall + &quot;? &quot; + (tblDuplicate isNot Nothing).ToString]" />
-            </Sequence>
           </ui:CommentOut.Body>
         </ui:CommentOut>
-        <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Get_Calls ended.&quot;]" />
+        <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Get_Calls ended for &quot; + in_WorkflowName +  &quot;.&quot;]" />
       </Sequence>
     </FlowStep>
   </Flowchart>

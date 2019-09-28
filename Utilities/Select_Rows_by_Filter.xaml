@@ -85,14 +85,11 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Select_Rows_by_Filter started.&quot;]" />
-    <ui:LogMessage DisplayName="Log criteria" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Criteria: &quot; + in_SelectCriteria]" />
     <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim drRowsTemp As DataRow()&#xA;&#xA;drRowsTemp = io_DataTable.Select(in_SelectCriteria)&#xA;&#xA;If drRowsTemp.Length &gt; 0 Then&#xA; io_DataTable = drRowsTemp.CopytoDataTable&#xA;Else&#xA; io_DataTable = Nothing&#xA;End if" DisplayName="Remove non-data top rows" sap:VirtualizedContainerService.HintSize="314,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2">
       <ui:InvokeCode.Arguments>
         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[io_DataTable]</InOutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_SelectCriteria">[in_SelectCriteria]</InArgument>
       </ui:InvokeCode.Arguments>
     </ui:InvokeCode>
-    <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Select_Rows_by_Filter ended.&quot;]" />
   </Sequence>
 </Activity>

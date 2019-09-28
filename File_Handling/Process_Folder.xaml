@@ -184,7 +184,7 @@
                             <av:Size x:Key="ShapeSize">200,51</av:Size>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log completion" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Trace" Message="[&quot;COMPLETED review of folder: &quot; + in_RootFolder]" />
+                        <ui:LogMessage DisplayName="Log completion" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Info" Message="[&quot;COMPLETED review of folder: &quot; + in_RootFolder]" />
                       </FlowStep>
                     </FlowStep.Next>
                   </FlowStep>
@@ -217,13 +217,11 @@
                     <av:PointCollection x:Key="ConnectorLocation">390,157 390,187 389.895,187 389.895,197</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log current folder" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Optimizing folder &quot; + FolderToOptimize]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:LogMessage>
                 <FlowStep.Next>
                   <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_30">
                     <sap:WorkflowViewStateService.ViewState>

@@ -275,7 +275,7 @@
                                                               <InArgument x:TypeArguments="x:String" x:Key="in_Line">[strArgument]</InArgument>
                                                             </ui:InvokeWorkflowFile.Arguments>
                                                           </ui:InvokeWorkflowFile>
-                                                          <If Condition="[drWorkflow(&quot;Arguments&quot;).ToString = (&quot;&lt;strong&gt;Arguments&lt;/strong&gt;&quot; + chr(10))]" DisplayName="Update all arguments with n/a" sap2010:WorkflowViewState.IdRef="If_33">
+                                                          <If Condition="[drWorkflow(&quot;Arguments&quot;).ToString = (&quot;Arguments&quot; + chr(10))]" DisplayName="Update all arguments with n/a" sap2010:WorkflowViewState.IdRef="If_33">
                                                             <If.Then>
                                                               <Assign DisplayName="Add header to arguments" sap2010:WorkflowViewState.IdRef="Assign_76">
                                                                 <Assign.To>
@@ -331,7 +331,7 @@
                                                               <InArgument x:TypeArguments="x:String" x:Key="in_Line">[strVariable]</InArgument>
                                                             </ui:InvokeWorkflowFile.Arguments>
                                                           </ui:InvokeWorkflowFile>
-                                                          <If Condition="[drWorkflow(&quot;Variables&quot;).ToString = (&quot;&lt;strong&gt;Variables&lt;/strong&gt;&quot; + chr(10))]" DisplayName="Update all variables with n/a" sap2010:WorkflowViewState.IdRef="If_36">
+                                                          <If Condition="[drWorkflow(&quot;Variables&quot;).ToString = (&quot;Variables&quot; + chr(10))]" DisplayName="Update all variables with n/a" sap2010:WorkflowViewState.IdRef="If_36">
                                                             <If.Then>
                                                               <Assign DisplayName="Add header to variables" sap2010:WorkflowViewState.IdRef="Assign_81">
                                                                 <Assign.To>
@@ -437,7 +437,7 @@
                                                 </Sequence>
                                               </If.Then>
                                             </If>
-                                            <If Condition="[strCallsAll = (&quot;&lt;strong&gt;Calls&lt;/strong&gt;&quot; + chr(13))]" DisplayName="Update calls with n/a" sap2010:WorkflowViewState.IdRef="If_41">
+                                            <If Condition="[strCallsAll = (&quot;Calls&quot; + chr(13))]" DisplayName="Update calls with n/a" sap2010:WorkflowViewState.IdRef="If_41">
                                               <If.Then>
                                                 <Assign DisplayName="Add header to calls" sap2010:WorkflowViewState.IdRef="Assign_87">
                                                   <Assign.To>

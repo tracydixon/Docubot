@@ -170,7 +170,7 @@
             <OutArgument x:TypeArguments="x:String">[in_RootPath]</OutArgument>
           </Assign.To>
           <Assign.Value>
-            <InArgument x:TypeArguments="x:String">C:\Users\tracy.dixon\OneDrive - VITAS Healthcare Corporation\source\RPA\eReferrals\Accept_Referral_IE</InArgument>
+            <InArgument x:TypeArguments="x:String">C:\Users\tracy.dixon\OneDrive - Centric Consulting\Source\Personal\Docubot\Test</InArgument>
           </Assign.Value>
         </Assign>
         <Assign DisplayName="Assign output path" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_13">
@@ -178,7 +178,7 @@
             <OutArgument x:TypeArguments="x:String">[strOutputFolder]</OutArgument>
           </Assign.To>
           <Assign.Value>
-            <InArgument x:TypeArguments="x:String">C:\Users\tracy.dixon\OneDrive - VITAS Healthcare Corporation\Documents\RPA\Tracy_Dixon\Docubot</InArgument>
+            <InArgument x:TypeArguments="x:String">C:\Users\tracy.dixon\OneDrive - Centric Consulting\Source\Personal\Docubot</InArgument>
           </Assign.Value>
         </Assign>
         <Assign DisplayName="Exclude QA?" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_14">

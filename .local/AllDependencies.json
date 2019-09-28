@@ -1012,9 +1012,9 @@
     "restore": {
       "projectUniqueName": "Docubot",
       "projectName": "Docubot",
-      "projectPath": "C:\\Users\\tracy.dixon\\OneDrive - VITAS Healthcare Corporation\\source\\RPA\\eReferrals\\Docubot\\.local",
+      "projectPath": "C:\\Users\\tracy.dixon\\OneDrive - Centric Consulting\\Source\\Personal\\Docubot\\.local",
       "packagesPath": "C:\\Users\\tracy.dixon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tracy.dixon\\OneDrive - VITAS Healthcare Corporation\\source\\RPA\\eReferrals\\Docubot\\.local"
+      "outputPath": "C:\\Users\\tracy.dixon\\OneDrive - Centric Consulting\\Source\\Personal\\Docubot\\.local"
     },
     "frameworks": {
       "net461": {

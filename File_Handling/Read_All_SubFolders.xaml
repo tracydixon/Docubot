@@ -306,6 +306,7 @@
                         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
                         <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
                         <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
+						<InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
