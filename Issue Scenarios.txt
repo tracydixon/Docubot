@@ -1,3 +1,0 @@
-Log start inaccurate.
-Log finish inaccurate.
-Still has commented out info.

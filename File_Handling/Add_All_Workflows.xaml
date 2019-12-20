@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>654,1219</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>220,423</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Read_All_SubFolders_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -71,7 +71,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Flowchart sap2010:Annotation.AnnotationText="Description&#xA;xxx&#xA;&#xA;Pre-Condition&#xA;xxx&#xA;&#xA;Post-Condition&#xA;xxx&#xA;&#xA;Arguments&#xA;xxx&#xA;&#xA;Calls&#xA;Process_Folder&#xA;Read_All_SubFolders (recursive)&#xA;&#xA;Called By&#xA;Select_Main_Folder&#xA;Read_All_SubFolders" DisplayName="Add_All_Workflows" sap:VirtualizedContainerService.HintSize="614,1139" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Description&#xA;xxx&#xA;&#xA;Pre-Condition&#xA;xxx&#xA;&#xA;Post-Condition&#xA;xxx&#xA;&#xA;Arguments&#xA;xxx&#xA;&#xA;Calls&#xA;Process_Folder&#xA;Read_All_SubFolders (recursive)&#xA;&#xA;Called By&#xA;Select_Main_Folder&#xA;Read_All_SubFolders" DisplayName="Add_All_Workflows" sap:VirtualizedContainerService.HintSize="634,1139" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="s:String[]" Name="strFolders" />
       <Variable x:TypeArguments="x:String" Name="strNewFileName" />
@@ -83,7 +83,7 @@
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">370,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">400,77.5 400,127.5</av:PointCollection>
@@ -97,12 +97,12 @@
     <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">279,228.5</av:Point>
-          <av:Size x:Key="ShapeSize">242,60</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">400,288.5 400,364.5</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">269,230</av:Point>
+          <av:Size x:Key="ShapeSize">262,60</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">400,290 400,364.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Read all subfolders from folder" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign DisplayName="Read all subfolders from folder" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="s:String[]">[strFolders]</OutArgument>
         </Assign.To>
@@ -377,7 +377,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">379,93 379,129.52</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Add_All_Workflows ended.&quot;]">
+                  <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Add_All_Workflows ended.&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -397,10 +397,10 @@
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">300,127.5</av:Point>
           <av:Size x:Key="ShapeSize">200,51</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">400,178.5 400,228.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">400,178.5 400,230</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Add_All_Workflows started.&quot;]">
+      <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Add_All_Workflows started.&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

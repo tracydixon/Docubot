@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>304,1088</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>220,333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GEX_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -72,10 +72,10 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence will be run when the process encounters an unmanaged error. We recommend you to log the errors, save the state of the process and let the process be killed in order to avoid running on faulted envrionments.&#xA;&#xA;Note:  Make sure that the 'errorInfo' and 'result' arguments are not removed" DisplayName="Global Exception Handler" sap:VirtualizedContainerService.HintSize="264,644" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence will be run when the process encounters an unmanaged error. We recommend you to log the errors, save the state of the process and let the process be killed in order to avoid running on faulted envrionments.&#xA;&#xA;Note:  Make sure that the 'errorInfo' and 'result' arguments are not removed" DisplayName="Global Exception Handler" sap:VirtualizedContainerService.HintSize="304,597" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="answer" />
-      <Variable x:TypeArguments="x:Int32" Default="0" Name="retry" />
+      <Variable x:TypeArguments="x:Int32" Name="retry" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -83,13 +83,19 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;Error Message: &quot; + errorInfo.Exception.Message]" />
-    <Assign sap2010:Annotation.AnnotationText="Decide what will be done next&#xA;&#xA;Continue - the exception will be re-thrown&#xA;&#xA;Ignore - The exception will be ignored and the execution will continue with the next activity after the one which threw the exception&#xA;&#xA;Retry - Re-execute the activity which threw the exception&#xA;&#xA;Abort - The execution will stop" DisplayName="Choose Next Behavior" sap:VirtualizedContainerService.HintSize="242,282" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error" Message="[&quot;Error Message: &quot; + errorInfo.Exception.Message.ToString]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <Assign sap2010:Annotation.AnnotationText="Decide what will be done next&#xA;&#xA;Continue - the exception will be re-thrown&#xA;&#xA;Ignore - The exception will be ignored and the execution will continue with the next activity after the one which threw the exception&#xA;&#xA;Retry - Re-execute the activity which threw the exception&#xA;&#xA;Abort - The execution will stop" DisplayName="Choose Next Behavior" sap:VirtualizedContainerService.HintSize="262,282" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="uico:ErrorAction">[result]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Continue]</InArgument>
+        <InArgument x:TypeArguments="uico:ErrorAction">[ErrorAction.Retry]</InArgument>
       </Assign.Value>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

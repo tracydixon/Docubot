@@ -3,25 +3,36 @@
   "description": "Documents RPA development.",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.UIAutomation.Activities": "[19.5.0]",
-    "UiPath.System.Activities": "[19.5.0]",
+    "UiPath.Excel.Activities": "[2.6.1]",
     "UiPath.Mail.Activities": "[1.5.0]",
-    "UiPath.Excel.Activities": "[2.6.1]"
+    "UiPath.System.Activities": "[19.5.0]",
+    "UiPath.UIAutomation.Activities": "[19.5.0]",
+    "UiPathTeam.Excel.Extensions.Activities": "[1.0.7107.42453]"
   },
-  "schemaVersion": "3.2",
-  "studioVersion": "18.4.1.0",
+  "webServices": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.10.0.484",
   "projectVersion": "1.0.0.0",
   "runtimeOptions": {
     "exceptionHandlerWorkflow": "Global_Handler.xaml",
     "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
     "excludedLoggedData": [
       "Private:*",
       "*password*"
-    ]
+    ],
+    "executionType": "Workflow"
   },
-  "projectType": "Workflow",
-  "libraryOptions": {
-    "includeOriginalXaml": false,
-    "privateWorkflows": []
-  }
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "fileInfos": []
+  },
+  "expressionLanguage": "VisualBasic"
 }

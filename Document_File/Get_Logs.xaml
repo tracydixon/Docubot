@@ -1,12 +1,13 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Get_Log" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_Workflow" Type="InOutArgument(sd:DataRow)" />
     <x:Property Name="in_Text" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>262,1051</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>220,573</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Log_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -57,7 +58,6 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -65,7 +65,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Description&#xA;Determine whether there is a log start and log end message.&#xA;&#xA;Pre-Condition&#xA;A file has been opened and the contents of the file passe&#xA;&#xA;Post-Condition&#xA;The workflow record has been updated accordingly.&#xA;&#xA;Arguments&#xA;io_Workflow: the datarow for each workflow name being documented.&#xA;in_Text: the text of the workflow file&#xA;out_LogStart: flag for whether there is a log start message.&#xA;out_LogEnd: flag for whether there is a log end message.&#xA;&#xA;Calls&#xA;n/a&#xA;&#xA;Called By&#xA;Process_Folder" DisplayName="Private: Get_Logs" sap:VirtualizedContainerService.HintSize="222,971" sap2010:WorkflowViewState.IdRef="Sequence_36">
+  <Sequence sap2010:Annotation.AnnotationText="Description&#xA;Determine whether there is a log start and log end message.&#xA;&#xA;Pre-Condition&#xA;A file has been opened and the contents of the file passe&#xA;&#xA;Post-Condition&#xA;The workflow record has been updated accordingly.&#xA;&#xA;Arguments&#xA;io_Workflow: the datarow for each workflow name being documented.&#xA;in_Text: the text of the workflow file&#xA;out_LogStart: flag for whether there is a log start message.&#xA;out_LogEnd: flag for whether there is a log end message.&#xA;&#xA;Calls&#xA;n/a&#xA;&#xA;Called By&#xA;Process_Folder" DisplayName="Get_Logs" sap:VirtualizedContainerService.HintSize="242,909" sap2010:WorkflowViewState.IdRef="Sequence_36">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intLogStartBegin" />
       <Variable x:TypeArguments="x:Int32" Name="intLogEndBegin" />
@@ -80,7 +80,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get_Logs started.&quot;]" />
+    <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Get_Logs started.&quot;]" />
     <Parallel DisplayName="Get log row positions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_1">
       <Assign DisplayName="Assign log start begin position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
@@ -100,7 +100,7 @@
       </Assign>
     </Parallel>
     <Parallel DisplayName="Get log start positions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_3">
-      <If Condition="[intLogStartRow &gt; 0]" DisplayName="Assign log start begin position" sap:VirtualizedContainerService.HintSize="464,432" sap2010:WorkflowViewState.IdRef="If_46">
+      <If Condition="[intLogStartRow &gt; 0]" DisplayName="Assign log start begin position" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_46">
         <If.Then>
           <Sequence DisplayName="Log start calculations" sap:VirtualizedContainerService.HintSize="264,284" sap2010:WorkflowViewState.IdRef="Sequence_37">
             <sap:WorkflowViewStateService.ViewState>
@@ -127,15 +127,15 @@
           </Sequence>
         </If.Then>
       </If>
-      <If Condition="[intLogEndRow &gt; 0]" DisplayName="Assign log end begin position" sap:VirtualizedContainerService.HintSize="464,432" sap2010:WorkflowViewState.IdRef="If_47">
+      <If Condition="[intLogEndRow &gt; 0]" DisplayName="Assign log end begin position" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="If_47">
         <If.Then>
-          <Sequence DisplayName="Log end calculations" sap:VirtualizedContainerService.HintSize="264,284" sap2010:WorkflowViewState.IdRef="Sequence_38">
+          <Sequence DisplayName="Log end calculations" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_38">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign log end begin position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_104">
+            <Assign DisplayName="Assign log end begin position" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_104">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[intLogEndBegin]</OutArgument>
               </Assign.To>
@@ -143,7 +143,7 @@
                 <InArgument x:TypeArguments="x:Int32">[Instr(intLogEndRow + 1, in_Text, "&amp;quot;") + 6]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign log end finish position" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_102">
+            <Assign DisplayName="Assign log end finish position" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_102">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[intLogEndFinish]</OutArgument>
               </Assign.To>
@@ -155,7 +155,7 @@
         </If.Then>
       </If>
     </Parallel>
-    <Parallel DisplayName="Add log start and end to workflows" sap:VirtualizedContainerService.HintSize="554,124" sap2010:WorkflowViewState.IdRef="Parallel_4">
+    <Parallel DisplayName="Add log start and end to workflows" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_4">
       <If sap2010:Annotation.AnnotationText="Get log start entry" Condition="[intLogStartBegin &gt; 0 and intLogStartFinish &gt; intLogStartBegin]" DisplayName="Get log start entry" sap:VirtualizedContainerService.HintSize="509,235" sap2010:WorkflowViewState.IdRef="If_44">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -215,6 +215,6 @@
         </If.Else>
       </If>
     </Parallel>
-    <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Get_Logs ended.&quot;]" />
+    <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Get_Logs ended.&quot;]" />
   </Sequence>
 </Activity>

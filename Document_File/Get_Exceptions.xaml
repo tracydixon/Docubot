@@ -12,6 +12,7 @@
  xmlns:ui="http://schemas.uipath.com/workflow/activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_Line" Type="InArgument(x:String)" />
     <x:Property Name="io_WorkflowRow" Type="InOutArgument(sd:DataRow)" />
   </x:Members>
@@ -83,7 +84,7 @@
       <Variable x:TypeArguments="s:String[]" Name="arrExceptions" />
       <Variable x:TypeArguments="x:Int32" Name="intRow" />
     </Sequence.Variables>
-    <ui:LogMessage DisplayName="Log start" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Get_Exceptions started.&quot;]" />
+    <ui:LogMessage DisplayName="Log start" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Get_Exceptions started.&quot;]" />
     <Parallel DisplayName="Get exceptions">
       <Sequence DisplayName="Standard Exceptions">
         <Sequence.Variables>
@@ -248,7 +249,7 @@
       </Sequence>
       <sap2010:WorkflowViewState.IdRef>Parallel_1</sap2010:WorkflowViewState.IdRef>
     </Parallel>
-    <ui:LogMessage DisplayName="Log end" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Get_Exceptions ended.&quot;]" />
+    <ui:LogMessage DisplayName="Log end" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Trace" Message="[&quot;Get_Exceptions ended.&quot;]" />
     <sads:DebugSymbol.Symbol>d3dEOlxVc2Vyc1x0ZGl4b25cT25lRHJpdmUgLSBWSVRBUyBIZWFsdGhjYXJlIENvcnBvcmF0aW9uXHNvdXJjZVxSUEFcZVJlZmVycmFsc1xEb2N1Ym90XERvY3VtZW50X0ZpbGVcR2V0X0V4Y2VwdGlvbnMueGFtbDxOA/0BDgIBAVYFVpoBAgFJVwX6ARACAQT7AQX7AZYBAgECVnBWlwECAUpYB6oBEgIBJasBB/gBEgIBBfsBbvsBkwECAQNdCWUSAgFEZgluEgIBP28JfA4CATp9CYUBEgIBNoYBCY4BEgIBMo8BCagBDgIBJqwBCbkBDgIBILoBCcIBEgIBHMMBCcsBEgIBGMwBCeUBDgIBDOYBCfYBDgIBBmI0Yj0CAUdfNV9LAgFFazZrRgIBQmg3aEwCAUBvF29TAgE7cQ15FgIBPIIBM4IBeAIBOX80f0cCATeLATOLAWQCATWIATSIAUYCATOPARePAVECASeRAQ2lARgCASqsAResAVYCASGuAQ22ARYCASK/ATO/AYQBAgEfvAE0vAFHAgEdyAEzyAFkAgEbxQE0xQFGAgEZzAEXzAFRAgENzgEN4gEYAgEQ5gEX5gGAAQIBB+gBDfMBGAIBCHY4dlACAT5zOXNXAgE9kgEPmgEYAgEumwEPowEYAgErswE4swFeAgEksAE5sAFaAgEjzwEP1wEYAgEU2AEP4AEYAgER6QEP8QEYAgEJlwE6lwGTAQIBMZQBO5QBSQIBL6ABOqABegIBLZ0BO50BWQIBLNQBOtQBkwECARfRATvRAUkCARXdATrdAX0CARPaATvaAVwCARLuATruAXYCAQvrATvrAVwCAQo=</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>

@@ -78,7 +78,7 @@
     </Flowchart.Variables>
     <Flowchart.StartNode>
       <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_4">
-        <ui:LogMessage DisplayName="Log start" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Select_Main_Folder started.&quot;]" />
+        <ui:LogMessage DisplayName="Log start" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Select_Main_Folder started.&quot;]" />
         <FlowStep.Next>
           <FlowDecision x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="TRUE = folder is provided, so skip selection.&#xA;&#xA;FALSE = folder not provided, so do a folder selection." Condition="[len(io_Folder) &gt; 0]" DisplayName="Folder is provided?" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
             <FlowDecision.True>
@@ -93,7 +93,7 @@
                 </Assign>
                 <FlowStep.Next>
                   <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
-                    <ui:LogMessage DisplayName="Log end" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Select_Main_Folder ended.&quot;]" />
+                    <ui:LogMessage DisplayName="Log end" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Select_Main_Folder ended.&quot;]" />
                   </FlowStep>
                 </FlowStep.Next>
               </FlowStep>
