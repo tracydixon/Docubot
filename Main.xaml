@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="738,1244" sap2010:WorkflowViewState.IdRef="TEST_Check_for_File_Use_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="738,1574" sap2010:WorkflowViewState.IdRef="TEST_Check_for_File_Use_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
       <x:String>System.Activities</x:String>
@@ -25,7 +25,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -48,9 +48,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Description&#xD;&#xA;Gathers phone records from T-Mobile and imports those records into Outlook.&#xD;&#xA;&#xD;&#xA;Arguments&#xD;&#xA;n/a&#xD;&#xA;&#xD;&#xA;Variables&#xD;&#xA;String, userName&#xD;&#xA;String, strTMobileExportFullPath&#xD;&#xA;String, strCDrive&#xD;&#xA;String, strAccessToken&#xD;&#xA;String, library&#xD;&#xA;String, emailResult&#xD;&#xA;sSecureString, password&#xD;&#xA;Int32, statusCode&#xD;&#xA;Dictionary(String, Object), dictConfig&#xD;&#xA;Boolean, blFileExists&#xD;&#xA;&#xD;&#xA;Calls&#xD;&#xA;TMobile\TMobile_Login&#xD;&#xA;TMobile/TMobile_Download&#xD;&#xA;Process_Events&#xD;&#xA;[strCDrive + &amp;quot;\Source\Custom_Library\Read_Config_Object&amp;quot;]&#xD;&#xA;[strCDrive + &amp;quot;\Source\Custom_Library\Processes_Kill_All_IE&amp;quot;]&#xD;&#xA;[strCDrive + &amp;quot;\Source\Custom_Library\Credential_Mgr_Get_Credentials&amp;quot;]&#xD;&#xA;&#xD;&#xA;Called By&#xD;&#xA;n/a&#xD;&#xA;&#xD;&#xA;Exceptions&#xD;&#xA;n/a&#xD;&#xA;&#xD;&#xA;Business Rule Exceptions&#xD;&#xA;n/a&#xD;&#xA;&#xD;&#xA;Variable Dictionary References&#xD;&#xA;n/a&#xD;&#xA;&#xD;&#xA;Arg Dictionary Calls&#xD;&#xA;n/a" DisplayName="Main" sap:VirtualizedContainerService.HintSize="718,1514" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Description&#xA;Gathers phone records from T-Mobile and imports those records into Outlook.&#xA;&#xA;Arguments&#xA;n/a&#xA;&#xA;Variables&#xA;String, userName&#xA;String, strTMobileExportFullPath&#xA;String, strCDrive&#xA;String, strAccessToken&#xA;String, library&#xA;String, emailResult&#xA;sSecureString, password&#xA;Int32, statusCode&#xA;Dictionary(String, Object), dictConfig&#xA;Boolean, blFileExists&#xA;&#xA;Calls&#xA;TMobile\TMobile_Login&#xA;TMobile/TMobile_Download&#xA;Process_Events&#xA;[strCDrive + &amp;quot;\Source\Custom_Library\Read_Config_Object&amp;quot;]&#xA;[strCDrive + &amp;quot;\Source\Custom_Library\Processes_Kill_All_IE&amp;quot;]&#xA;[strCDrive + &amp;quot;\Source\Custom_Library\Credential_Mgr_Get_Credentials&amp;quot;]&#xA;&#xA;Called By&#xA;n/a&#xA;&#xA;Exceptions&#xA;n/a&#xA;&#xA;Business Rule Exceptions&#xA;n/a&#xA;&#xA;Variable Dictionary References&#xA;n/a&#xA;&#xA;Arg Dictionary Calls&#xA;n/a" DisplayName="Main" sap:VirtualizedContainerService.HintSize="718,1514" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="rootPath" />
       <Variable x:TypeArguments="x:String" Name="outputFolder" />
@@ -82,7 +83,7 @@
           <av:PointCollection x:Key="ConnectorLocation">150,657.5 150,714.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Complete the process of gathering documentation." DisplayName="Invoke Process" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process.xaml">
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Complete the process of gathering documentation." DisplayName="Invoke Process" sap:VirtualizedContainerService.HintSize="200,93" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Process.xaml">
         <ui:InvokeWorkflowFile.Arguments>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[configDictionary]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="in_RootPath">[rootPath]</InArgument>
@@ -188,7 +189,7 @@
               <av:PointCollection x:Key="ConnectorLocation">260,213 260,254.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Settings" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Settings" sap:VirtualizedContainerService.HintSize="1042,472" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -210,13 +211,20 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:GetEnvironmentVariable>
             </Parallel>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Init_All_Settings" sap:VirtualizedContainerService.HintSize="1000,89" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="[sourceRootPath + &quot;\Source\Custom_Library\Init_All_Settings.xaml&quot;]">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
+                <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[configDictionary]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
             <Parallel DisplayName="Assign settings" sap:VirtualizedContainerService.HintSize="1000,106" sap2010:WorkflowViewState.IdRef="Parallel_1">
               <Assign DisplayName="Assign root path" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[rootPath]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[sourceRootPath + "\Personal\TMobile_Records_to_Calendar_IE"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[configDictionary("Source_Path").ToString]</InArgument>
                 </Assign.Value>
               </Assign>
               <Assign DisplayName="Assign output path" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -224,7 +232,7 @@
                   <OutArgument x:TypeArguments="x:String">[outputFolder]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[userProfile + "\OneDrive - Centric Consulting\Desktop\"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[configDictionary("Documentation_Output_Path").ToString]</InArgument>
                 </Assign.Value>
               </Assign>
               <Assign DisplayName="Exclude QA?" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">

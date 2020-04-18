@@ -78,6 +78,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -111,14 +112,14 @@
           <av:Size x:Key="ShapeSize">200,66</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get calls" sap:VirtualizedContainerService.HintSize="242,507" sap2010:WorkflowViewState.IdRef="Sequence_21">
+      <Sequence DisplayName="Get calls" sap:VirtualizedContainerService.HintSize="304,785" sap2010:WorkflowViewState.IdRef="Sequence_21">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Parallel DisplayName="Assignment prep" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_1">
-          <Assign sap2010:Annotation.AnnotationText="Same name without extension." DisplayName="Get workflow name" sap:VirtualizedContainerService.HintSize="262,87" sap2010:WorkflowViewState.IdRef="Assign_53">
+        <Parallel DisplayName="Assignment prep" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="Parallel_1">
+          <Assign sap2010:Annotation.AnnotationText="Same name without extension." DisplayName="Get workflow name" sap:VirtualizedContainerService.HintSize="262,91" sap2010:WorkflowViewState.IdRef="Assign_53">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strCall]</OutArgument>
             </Assign.To>
@@ -131,16 +132,16 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Trace" Message="[&quot;Get_Calls started for &quot; + in_WorkflowName +  &quot;.&quot;]" />
+          <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Get_Calls started for &quot; + in_WorkflowName +  &quot;.&quot;]" />
         </Parallel>
-        <Parallel DisplayName="Get calls table and trim call" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Parallel_2">
+        <Parallel DisplayName="Get calls table and trim call" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="Parallel_2">
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Private: Invoke Trim_and_Remove_New_Lines workflow" sap:VirtualizedContainerService.HintSize="200,60" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Utilities\Trim_and_Remove_New_Lines.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
               <InOutArgument x:TypeArguments="x:String" x:Key="io_Data">[strCall]</InOutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <Assign DisplayName="Assign duplicate table" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+          <Assign DisplayName="Assign duplicate table" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_55">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[tblDuplicate]</OutArgument>
             </Assign.To>
@@ -149,9 +150,34 @@
             </Assign.Value>
           </Assign>
         </Parallel>
-        <TryCatch DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <If sap2010:Annotation.AnnotationText="TRUE = variable path in call, remove it&#xD;&#xA;&#xD;&#xA;FALSE = no variable path, do nothing." Condition="[instr(strCall, &quot; + &quot;) &gt; 0]" DisplayName="Remove variable path" sap:VirtualizedContainerService.HintSize="262,138" sap2010:WorkflowViewState.IdRef="If_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If.Then>
+            <Assign DisplayName="Remove variable path info from call" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_56">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strCall]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[trim(mid(strCall, instr(strCall, " + ")+3))]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Remove brackets and quotes" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_57">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[strCall]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[strCall.Replace("[","").Replace("]","").Replace("&amp;quot;","").Replace("/","\")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <TryCatch DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <TryCatch.Try>
-            <Parallel DisplayName="Add and log" sap:VirtualizedContainerService.HintSize="554,110" sap2010:WorkflowViewState.IdRef="Parallel_3">
+            <Parallel DisplayName="Add and log" sap:VirtualizedContainerService.HintSize="574,110" sap2010:WorkflowViewState.IdRef="Parallel_3">
               <ui:LogMessage DisplayName="Log calls" sap:VirtualizedContainerService.HintSize="200,64" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Trace" Message="[in_WorkflowName + &quot; calls &quot; + strCall + &quot;.&quot;]" />
               <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Fields are workflow_name, calls." ArrayRow="[{in_WorkflowName, strCall}]" DataTable="[io_Calls]" DisplayName="Add row to calls table" sap:VirtualizedContainerService.HintSize="200,64" sap2010:WorkflowViewState.IdRef="AddDataRow_13">
                 <sap:WorkflowViewStateService.ViewState>
@@ -178,7 +204,7 @@
             </Catch>
           </TryCatch.Catches>
         </TryCatch>
-        <If Condition="[tblDuplicate.Rows.Count = 0]" DisplayName="Filter rows" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_6">
+        <If Condition="[tblDuplicate.Rows.Count = 0]" DisplayName="Filter rows" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="If_6">
           <If.Then>
             <Sequence DisplayName="Add calls" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_27">
               <sap:WorkflowViewStateService.ViewState>
@@ -252,7 +278,7 @@
             </Sequence>
           </If.Then>
         </If>
-        <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;Get_Calls ended for &quot; + in_WorkflowName +  &quot;.&quot;]" />
+        <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Get_Calls ended for &quot; + in_WorkflowName +  &quot;.&quot;]" />
       </Sequence>
     </FlowStep>
   </Flowchart>

@@ -111,7 +111,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Trace" Message="[&quot;Process_File started.&quot;]" />
+    <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Process_File started.&quot;]" />
     <ui:LogMessage DisplayName="Log filename" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Trace" Message="[&quot;Processing &quot; + in_File]" />
     <Assign DisplayName="Assign TROUBLESHOOTING_calls" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_124">
       <Assign.To>
@@ -586,6 +586,6 @@
         </Assign>
       </If.Then>
     </If>
-    <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Trace" Message="[&quot;Process_File ended for &quot; + strFileFormatted + &quot;.&quot;]" />
+    <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Process_File ended for &quot; + strFileFormatted + &quot;.&quot;]" />
   </Sequence>
 </Activity>
