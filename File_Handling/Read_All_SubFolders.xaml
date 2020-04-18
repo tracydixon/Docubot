@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>654,998</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>220,438</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Read_All_SubFolders_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -69,6 +69,7 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -76,7 +77,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Flowchart sap2010:Annotation.AnnotationText="Description&#xA;xxx&#xA;&#xA;Pre-Condition&#xA;xxx&#xA;&#xA;Post-Condition&#xA;xxx&#xA;&#xA;Arguments&#xA;xxx&#xA;&#xA;Calls&#xA;Process_Folder&#xA;Read_All_SubFolders (recursive)&#xA;&#xA;Called By&#xA;Read_All_SubFolders" DisplayName="Read_All_SubFolders" sap:VirtualizedContainerService.HintSize="614,918" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Description&#xA;Read a folder and subfolders in it in preparation for file processing.&#xA;&#xA;Pre-Condition&#xA;xxx&#xA;&#xA;Post-Condition&#xA;xxx&#xA;&#xA;Arguments&#xA;xxx&#xA;&#xA;Calls&#xA;Process_Folder&#xA;Read_All_SubFolders (recursive)&#xA;&#xA;Called By&#xA;Read_All_SubFolders" DisplayName="Read_All_SubFolders" sap:VirtualizedContainerService.HintSize="634,994" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="s:String[]" Name="strFolders" />
       <Variable x:TypeArguments="sd:DataTable" Name="tblArguments" />
@@ -86,20 +87,21 @@
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">20,12.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">80,50 110,50 110,140 210,140</av:PointCollection>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Double x:Key="Height">675.5</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID10</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_16">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">210,419</av:Point>
+          <av:Point x:Key="ShapeLocation">210,493.5</av:Point>
           <av:Size x:Key="ShapeSize">200,51</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">379,93 379,129.52</av:PointCollection>
         </scg:Dictionary>
@@ -112,221 +114,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_41">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">210,318</av:Point>
-          <av:Size x:Key="ShapeSize">200,51</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">310,369 310,419</av:PointCollection>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_9">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ParallelForEach x:TypeArguments="x:String" DisplayName="Process each subfolder" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_1" Values="[strFolders]">
-          <ActivityAction x:TypeArguments="x:String">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="x:String" Name="strFolder" />
-            </ActivityAction.Argument>
-            <If Condition="[(instr(lcase(strFolder), &quot;test&quot;) = 0 and instr(lcase(strFolder), &quot;qa&quot;) = 0 and in_ExcludeQA) or in_ExcludeQA = false]" DisplayName="Process subfolders" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_3">
-              <If.Then>
-                <Flowchart DisplayName="Subfolder - Read Subfolder or Optimize/Delete" sap:VirtualizedContainerService.HintSize="694,927" sap2010:WorkflowViewState.IdRef="Flowchart_15">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <av:Point x:Key="ShapeLocation">40,12.5</av:Point>
-                      <av:Size x:Key="ShapeSize">60,75</av:Size>
-                      <x:Double x:Key="Height">891</x:Double>
-                      <av:PointCollection x:Key="ConnectorLocation">100,50 281.25,50 281.25,154.5</av:PointCollection>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      <x:Double x:Key="Width">679.5</x:Double>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Flowchart.StartNode>
-                    <x:Reference>__ReferenceID4</x:Reference>
-                  </Flowchart.StartNode>
-                  <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_68">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:Point x:Key="ShapeLocation">60,474.5</av:Point>
-                        <av:Size x:Key="ShapeSize">200,51</av:Size>
-                        <av:PointCollection x:Key="ConnectorLocation">240,1036.5 240,1260 310,1260</av:PointCollection>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="&quot;Read_All_SubFolders.xaml&quot;" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_43" UnSafe="False" WorkflowFileName="File_Handling\Read_All_SubFolders.xaml">
-                      <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="strCDrive">[strCDrive]</InOutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolder">[in_OutputFolder]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_RootFolder">[in_RootFolder]</InArgument>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="FolderToOptimize">[strFolder]</InOutArgument>
-                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
-                      </ui:InvokeWorkflowFile.Arguments>
-                    </ui:InvokeWorkflowFile>
-                  </FlowStep>
-                  <FlowDecision x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="TRUE = there are subfolders, so go to the next subfolder first. Only when no subfolders do you optimize all files then delete folder.&#xA;&#xA;FALSE = no subfolders, so optimize this folder then delete if empty." Condition="[Directory.GetDirectories(strFolder).Length &gt; 0]" DisplayName="Subfolder have a subfolder?" sap:VirtualizedContainerService.HintSize="154,279" sap2010:WorkflowViewState.IdRef="FlowDecision_13" True="{x:Reference __ReferenceID0}">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <av:Point x:Key="ShapeLocation">242.5,154.5</av:Point>
-                        <av:Size x:Key="ShapeSize">154,279</av:Size>
-                        <av:PointCollection x:Key="TrueConnector">242.5,294 160,294 160,474.5</av:PointCollection>
-                        <av:PointCollection x:Key="FalseConnector">396.5,294 470,294 470,464</av:PointCollection>
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <FlowDecision.False>
-                      <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_71">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <av:Point x:Key="ShapeLocation">370,464</av:Point>
-                            <av:Size x:Key="ShapeSize">200,51</av:Size>
-                            <av:PointCollection x:Key="ConnectorLocation">470,515 470,550</av:PointCollection>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log folder to optimize" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Warn" Message="[&quot;Subfolder to optimize: &quot; + strFolder]">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                        </ui:LogMessage>
-                        <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_70">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">349,550</av:Point>
-                                <av:Size x:Key="ShapeSize">242,60</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">470,610 470,660</av:PointCollection>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Assign DisplayName="Read all files from folder" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_28">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="s:String[]">[strFiles]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(strFolder, "*.xaml")]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <FlowStep.Next>
-                              <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_69">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">370,660</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,51</av:Size>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process_Folder workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_44" UnSafe="False" WorkflowFileName="File_Handling\Process_Folder.xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="FolderToOptimize">[strFolder]</InArgument>
-                                    <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="strCDrive">[strCDrive]</InOutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolder">[in_OutputFolder]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_RootFolder">[in_RootFolder]</InArgument>
-                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Arguments">[tblArguments]</InOutArgument>
-                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
-                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
-								<InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:InvokeWorkflowFile>
-                              </FlowStep>
-                            </FlowStep.Next>
-                          </FlowStep>
-                        </FlowStep.Next>
-                      </FlowStep>
-                    </FlowDecision.False>
-                  </FlowDecision>
-                  <x:Reference>__ReferenceID1</x:Reference>
-                  <x:Reference>__ReferenceID2</x:Reference>
-                  <x:Reference>__ReferenceID3</x:Reference>
-                </Flowchart>
-              </If.Then>
-            </If>
-          </ActivityAction>
-        </ParallelForEach>
-        <Flowchart DisplayName="Process root folder" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_13">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <av:Point x:Key="ShapeLocation">40,12.5</av:Point>
-              <av:Size x:Key="ShapeSize">60,75</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">100,50 280,50 280,80</av:PointCollection>
-              <x:Double x:Key="Width">610</x:Double>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <Flowchart.StartNode>
-            <x:Reference>__ReferenceID6</x:Reference>
-          </Flowchart.StartNode>
-          <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_40">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:Point x:Key="ShapeLocation">159,80</av:Point>
-                <av:Size x:Key="ShapeSize">242,60</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">280,140 280,190</av:PointCollection>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Read all files from folder" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_25">
-              <Assign.To>
-                <OutArgument x:TypeArguments="s:String[]">[strFiles]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(FolderToOptimize, "*.xaml")]</InArgument>
-              </Assign.Value>
-            </Assign>
-            <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_67">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">180,190</av:Point>
-                    <av:Size x:Key="ShapeSize">200,51</av:Size>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[(instr(lcase(FolderToOptimize), &quot;test&quot;) = 0 and instr(lcase(FolderToOptimize), &quot;qa&quot;) = 0 and in_ExcludeQA) or in_ExcludeQA = false]" DisplayName="Process root folder" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_2">
-                  <If.Then>
-                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process_Folder workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_42" UnSafe="False" WorkflowFileName="File_Handling\Process_Folder.xaml">
-                      <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="FolderToOptimize">[FolderToOptimize]</InArgument>
-                        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InOutArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="strCDrive">[strCDrive]</InOutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolder">[in_OutputFolder]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_RootFolder">[in_RootFolder]</InArgument>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Arguments">[tblArguments]</InOutArgument>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
-                        <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
-						<InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
-                      </ui:InvokeWorkflowFile.Arguments>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:InvokeWorkflowFile>
-                  </If.Then>
-                </If>
-              </FlowStep>
-            </FlowStep.Next>
-          </FlowStep>
-          <x:Reference>__ReferenceID5</x:Reference>
-        </Flowchart>
-      </Sequence>
-      <FlowStep.Next>
-        <x:Reference>__ReferenceID7</x:Reference>
-      </FlowStep.Next>
-    </FlowStep>
-    <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_59">
+    <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_59">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">210,114.5</av:Point>
@@ -342,28 +130,265 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_60">
+        <FlowStep x:Name="__ReferenceID8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">189,215.5</av:Point>
-              <av:Size x:Key="ShapeSize">242,60</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">310,275.5 310,318</av:PointCollection>
+              <av:Point x:Key="ShapeLocation">210,215.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,228</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">310,443.5 310,493.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Read all subfolders from folder" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_26">
-            <Assign.To>
-              <OutArgument x:TypeArguments="s:String[]">[strFolders]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="s:String[]">[Directory.GetDirectories(FoldertoOptimize)]</InArgument>
-            </Assign.Value>
-          </Assign>
+          <If sap2010:Annotation.AnnotationText="TRUE = If QA is excluded, folder does not have test or QA in the name, and folder name does not begin with a period, so process subfolder.&#xA;&#xA;FALSE = If QA is excluded, folder does have test or QA in the name, or folder name does begin with a period, so ignore folder and do nothing." Condition="[((instr(lcase(FoldertoOptimize), &quot;test&quot;) = 0 and instr(lcase(FoldertoOptimize), &quot;qa&quot;) = 0 and in_ExcludeQA) or in_ExcludeQA = false) and instr(lcase(FolderToOptimize), &quot;\.&quot;) = 0]" DisplayName="Process subfolders" sap:VirtualizedContainerService.HintSize="484,301" sap2010:WorkflowViewState.IdRef="If_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence DisplayName="Read subfolders and process" sap:VirtualizedContainerService.HintSize="304,258" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="Read all subfolders from folder" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="s:String[]">[strFolders]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="s:String[]">[Directory.GetDirectories(FoldertoOptimize)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ParallelForEach x:TypeArguments="x:String" DisplayName="Process each subfolder" sap:VirtualizedContainerService.HintSize="307,376" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_2" Values="[strFolders]">
+                    <ActivityAction x:TypeArguments="x:String">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:String" Name="strFolder" />
+                      </ActivityAction.Argument>
+                      <If sap2010:Annotation.AnnotationText="TRUE = If QA is excluded, folder does not have test or QA in the name, and folder name does not begin with a period, so process subfolder.&#xA;&#xA;FALSE = If QA is excluded, folder does have test or QA in the name, or folder name does begin with a period, so ignore folder and do nothing." Condition="[((instr(lcase(strFolder), &quot;test&quot;) = 0 and instr(lcase(strFolder), &quot;qa&quot;) = 0 and in_ExcludeQA) or in_ExcludeQA = false) and instr(lcase(strFolder), &quot;\.&quot;) = 0]" DisplayName="Process subfolders" sap:VirtualizedContainerService.HintSize="484,295" sap2010:WorkflowViewState.IdRef="If_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Flowchart DisplayName="Subfolder - Read Subfolder or Optimize/Delete" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_16">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <av:Point x:Key="ShapeLocation">40,12.5</av:Point>
+                                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                <x:Double x:Key="Height">891</x:Double>
+                                <av:PointCollection x:Key="ConnectorLocation">100,50 281.25,50 281.25,154.5</av:PointCollection>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                <x:Double x:Key="Width">679.5</x:Double>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Flowchart.StartNode>
+                              <x:Reference>__ReferenceID4</x:Reference>
+                            </Flowchart.StartNode>
+                            <FlowStep x:Name="__ReferenceID0">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">60,474.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">240,1036.5 240,1260 310,1260</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="&quot;Read_All_SubFolders.xaml&quot;" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_45" UnSafe="False" WorkflowFileName="File_Handling\Read_All_SubFolders.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="strCDrive">[strCDrive]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolder">[in_OutputFolder]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_RootFolder">[in_RootFolder]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="FolderToOptimize">[strFolder]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </FlowStep>
+                            <FlowDecision x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="TRUE = there are subfolders, so go to the next subfolder first. Only when no subfolders do you optimize all files then delete folder.&#xA;&#xA;FALSE = no subfolders, so optimize this folder then delete if empty." Condition="[Directory.GetDirectories(strFolder).Length &gt; 0]" DisplayName="Subfolder have a subfolder?" sap:VirtualizedContainerService.HintSize="154,279" sap2010:WorkflowViewState.IdRef="FlowDecision_14" True="{x:Reference __ReferenceID0}">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <av:Point x:Key="ShapeLocation">242.5,154.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">154,279</av:Size>
+                                  <av:PointCollection x:Key="TrueConnector">242.5,294 160,294 160,474.5</av:PointCollection>
+                                  <av:PointCollection x:Key="FalseConnector">396.5,294 470,294 470,464</av:PointCollection>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <FlowDecision.False>
+                                <FlowStep x:Name="__ReferenceID1">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">370,464</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">470,515 470,545 480,545 480,550</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log folder to optimize" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Warn" Message="[&quot;Subfolder to optimize: &quot; + strFolder]">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:LogMessage>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID2">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">349,550</av:Point>
+                                          <av:Size x:Key="ShapeSize">262,60</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">480,610 480,654.5</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="Read all files from folder" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_30">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="s:String[]">[strFiles]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(strFolder, "*.xaml")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <FlowStep.Next>
+                                        <FlowStep x:Name="__ReferenceID3">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">380,654.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process_Folder workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_46" UnSafe="False" WorkflowFileName="File_Handling\Process_Folder.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="x:String" x:Key="FolderToOptimize">[strFolder]</InArgument>
+                                              <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InOutArgument>
+                                              <InOutArgument x:TypeArguments="x:String" x:Key="strCDrive">[strCDrive]</InOutArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolder">[in_OutputFolder]</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="in_RootFolder">[in_RootFolder]</InArgument>
+                                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Arguments">[tblArguments]</InOutArgument>
+                                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
+                                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
+                                              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:InvokeWorkflowFile>
+                                        </FlowStep>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowDecision.False>
+                            </FlowDecision>
+                            <x:Reference>__ReferenceID1</x:Reference>
+                            <x:Reference>__ReferenceID2</x:Reference>
+                            <x:Reference>__ReferenceID3</x:Reference>
+                          </Flowchart>
+                        </If.Then>
+                        <If.Else>
+                          <ui:LogMessage DisplayName="Log folder to ignore" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[strFolder + &quot; folder skipped.&quot;]" />
+                        </If.Else>
+                      </If>
+                    </ActivityAction>
+                  </ParallelForEach>
+                  <Flowchart DisplayName="Process root folder" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_17">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <av:Point x:Key="ShapeLocation">40,12.5</av:Point>
+                        <av:Size x:Key="ShapeSize">60,75</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">100,50 290,50 290,80</av:PointCollection>
+                        <x:Double x:Key="Width">610</x:Double>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Flowchart.StartNode>
+                      <x:Reference>__ReferenceID6</x:Reference>
+                    </Flowchart.StartNode>
+                    <FlowStep x:Name="__ReferenceID6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">159,80</av:Point>
+                          <av:Size x:Key="ShapeSize">262,60</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">290,140 290,194.5</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="Read all files from folder" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_31">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="s:String[]">[strFiles]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(FolderToOptimize, "*.xaml")]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">190,194.5</av:Point>
+                              <av:Size x:Key="ShapeSize">200,198</av:Size>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If sap2010:Annotation.AnnotationText="TRUE = folder is not a test folder and does not have a period to begin the name, so process as usual.&#xA;&#xA;FALSE = folder is a test folder or folder has a period to begin the name, so skip processing and log." Condition="[((instr(lcase(FolderToOptimize), &quot;test&quot;) = 0 and instr(lcase(FolderToOptimize), &quot;qa&quot;) = 0 and in_ExcludeQA) or in_ExcludeQA = false) AND instr(lcase(FolderToOptimize), &quot;\.&quot;) = 0]" DisplayName="Process root folder" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="If_5">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If.Then>
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process_Folder workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_47" UnSafe="False" WorkflowFileName="File_Handling\Process_Folder.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="FolderToOptimize">[FolderToOptimize]</InArgument>
+                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="strCDrive">[strCDrive]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_OutputFolder">[in_OutputFolder]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_RootFolder">[in_RootFolder]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Arguments">[tblArguments]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_MasterOutput">[io_MasterOutput]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_Calls">[io_Calls]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_ExcludeQA">[in_ExcludeQA]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_References">[io_References]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                            </If.Then>
+                            <If.Else>
+                              <ui:LogMessage DisplayName="Log folder to ignore" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[FolderToOptimize + &quot; folder skipped.&quot;]" />
+                            </If.Else>
+                          </If>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                    <x:Reference>__ReferenceID5</x:Reference>
+                  </Flowchart>
+                </Sequence>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <ui:LogMessage DisplayName="Log folder to ignore" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[FolderToOptimize + &quot; folder skipped.&quot;]" />
+            </If.Else>
+          </If>
           <FlowStep.Next>
-            <x:Reference>__ReferenceID8</x:Reference>
+            <x:Reference>__ReferenceID7</x:Reference>
           </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
   </Flowchart>
 </Activity>

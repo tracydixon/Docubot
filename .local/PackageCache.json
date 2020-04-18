@@ -18,7 +18,8 @@
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.excel.activities/2.6.1\\lib/net461/UiPath.Excel.Activities.Design.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.excel.activities/2.6.1\\lib/net461/UiPath.Excel.Activities.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.excel.activities/2.6.1\\lib/net461/UiPath.Excel.dll"
-      ]
+      ],
+      "Path": null
     },
     {
       "Package": {
@@ -35,7 +36,8 @@
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.mail.activities/1.5.0\\lib/net452/UiPath.Mail.Activities.Design.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.mail.activities/1.5.0\\lib/net452/UiPath.Mail.Activities.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.mail.activities/1.5.0\\lib/net452/UiPath.Mail.dll"
-      ]
+      ],
+      "Path": null
     },
     {
       "Package": {
@@ -59,7 +61,8 @@
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.system.activities/19.5.0\\lib/net461/UiPath.OrchestratorClient.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.system.activities/19.5.0\\lib/net461/UiPath.System.Activities.Design.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.system.activities/19.5.0\\lib/net461/UiPath.System.Activities.dll"
-      ]
+      ],
+      "Path": null
     },
     {
       "Package": {
@@ -102,7 +105,8 @@
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.vision/1.6.0\\lib/net452/UiPath.Vision.MicrosoftCloud.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.vision/1.6.0\\lib/net452/UiPath.Vision.Tesseract.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipath.vision/1.6.0\\lib/net452/UiPath.Vision.dll"
-      ]
+      ],
+      "Path": null
     },
     {
       "Package": {
@@ -112,7 +116,8 @@
       "Assemblies": [
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipathteam.excel.extensions.activities/1.0.7107.42453\\lib/net451/Excel.Activites.Design.dll",
         "C:\\Users\\tracy.dixon\\.nuget\\packages\\uipathteam.excel.extensions.activities/1.0.7107.42453\\lib/net451/Excel.Activities.dll"
-      ]
+      ],
+      "Path": null
     }
   ],
   "Conflicts": [],
