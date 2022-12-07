@@ -1,0 +1,39 @@
+﻿Create_WellSky_Profile_Record
+--------------------------------------------------------------------------
+Arguments
+in_TransactionItem (SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+WellSky\WellSky_Login
+
+
+
+
+
+WellSky_Close
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Capture_Metric
+WellSky\WellSky_Login
+
+
+
+
+
+WellSky_Login
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+WellSky\WellSky_Login
+Framework\Get_App_Credentials
+
+
+
+

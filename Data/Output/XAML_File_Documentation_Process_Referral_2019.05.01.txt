@@ -1,0 +1,2212 @@
+﻿--
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+n/a
+
+
+
+
+- TEST_Extract_Arguments
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+
+
+
+
+
+- TEST_Process_All_Referrals
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+
+
+
+
+
+_Test
+--------------------------------------------------------------------------
+Arguments
+io_dictConfig" Type="InOutArgument(Dictionary(String, Object)):in_RootPathNonProd" Type="InOutArgument(String):in_RootPathProd" Type="InOutArgument(String):in_strEnvironment (String):io_dictProgramLookup" Type="InOutArgument(Dictionary(String, List(String))):io_dictRelationships" Type="InOutArgument(Dictionary(String, Int32)):out_dictPatientStatusLookup" Type="OutArgument(Dictionary(String, List(Object))):out_dictPlantLookup" Type="OutArgument(Dictionary(String, String)):
+
+Calls
+Framework\Init_All_Applications
+Framework\Init_All_Settings
+Framework\Kill_All_Processes
+Utilities\Send_Text
+Allscripts\Gather_Queue_Items
+Framework\Get_Transaction_Data
+Process
+Framework\Set_Transaction_Status
+Framework\Close_All_Applications
+Utilities\Capture_Metric
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Data
+Vx\Search_for_Vx_Patient
+Allscripts\Combine_Documents
+Allscripts\Navigate_to_Homepage
+Allscripts\Create_Face_Sheet_PDF
+Vx\Create_Vx_Patient_Record
+WellSky\Create_WellSky_Profile_Record
+Vx\Vx_PatientID_Add_to_Queue
+Vx\Vx_Document_Addition
+Notifications\Get_Patient_Ribbon
+Notifications\Create_Vx_Link
+Notifications\Create_Email_Body
+Notifications\Create_Email_Subject
+Notifications\Email_Referral
+Notifications\Email_Referral_Exception
+Notifications\Skype_Referral
+Utilities/Export_Metrics
+Allscripts\Add_Comment_Updates
+Main
+
+
+
+
+
+_Test_plus_Open_Apps
+--------------------------------------------------------------------------
+Arguments
+io_dictConfig" Type="InOutArgument(Dictionary(String, Object)):in_RootPathNonProd" Type="InOutArgument(String):in_RootPathProd" Type="InOutArgument(String):in_strEnvironment (String):io_dictProgramLookup" Type="InOutArgument(Dictionary(String, List(String))):io_dictRelationships" Type="InOutArgument(Dictionary(String, Int32)):out_dictPatientStatusLookup" Type="OutArgument(Dictionary(String, List(Object))):out_dictPlantLookup" Type="OutArgument(Dictionary(String, String)):
+
+Calls
+Framework\Init_All_Applications
+Framework\Init_All_Settings
+Framework\Kill_All_Processes
+Utilities\Send_Text
+Allscripts\Gather_Queue_Items
+Framework\Get_Transaction_Data
+Process
+Framework\Set_Transaction_Status
+Framework\Close_All_Applications
+Utilities\Capture_Metric
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Data
+Vx\Search_for_Vx_Patient
+Allscripts\Combine_Documents
+Allscripts\Navigate_to_Homepage
+Allscripts\Create_Face_Sheet_PDF
+Vx\Create_Vx_Patient_Record
+WellSky\Create_WellSky_Profile_Record
+Vx\Vx_PatientID_Add_to_Queue
+Vx\Vx_Document_Addition
+Notifications\Get_Patient_Ribbon
+Notifications\Create_Vx_Link
+Notifications\Create_Email_Body
+Notifications\Create_Email_Subject
+Notifications\Email_Referral
+Notifications\Email_Referral_Exception
+Notifications\Skype_Referral
+Utilities/Export_Metrics
+Allscripts\Add_Comment_Updates
+Main
+
+
+
+
+
+Add_Comment_Updates
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):
+
+Calls
+n/a
+
+
+
+
+Allscripts_Close
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+n/a
+
+
+
+
+Allscripts_Open
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+
+
+
+
+
+BRException_Send_Email
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_BusinessRuleException (ui:BusinessRuleException):in_TransactionItem (scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Capture_Metric
+--------------------------------------------------------------------------
+Arguments
+in_MetricName (String):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):in_MetricsID" Type="InOutArgument(Int32):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Check_Retry_and_Throw
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Clean_Data
+--------------------------------------------------------------------------
+Arguments
+io_Data" Type="InOutArgument(String):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Close_All_Applications
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+
+
+
+
+
+Combine_Documents
+--------------------------------------------------------------------------
+Arguments
+in_ReferralID (String):in_PatientName (String):in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):in_RootPath (String):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+
+
+
+
+
+Combined_Doc_Download
+--------------------------------------------------------------------------
+Arguments
+in_FileSelector (String):in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):out_DownloadFilePath" Type="OutArgument(String):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+
+
+
+
+
+Combined_Doc_Request
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_TransactionItem (scg1:SortedDictionary(String, Object)):in_Filename (String):out_FileStatusSelector" Type="OutArgument(String):out_Requested" Type="OutArgument(Boolean):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+
+
+
+
+
+Combined_Doc_Verify_Completed
+--------------------------------------------------------------------------
+Arguments
+in_TransactionItem (SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):in_FileStatusSelector (String):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+
+
+
+
+
+Create_Email_Body
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Create_Email_Subject
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Create_Face_Sheet_PDF
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):in_InputPath (String):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+
+
+
+
+
+Create_Metric_Dictionary
+--------------------------------------------------------------------------
+Arguments
+io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Create_Queue_Item
+--------------------------------------------------------------------------
+Arguments
+out_Patient_Name" Type="OutArgument(String):out_Referral_ID" Type="OutArgument(String):out_Portal_Code" Type="OutArgument(String):out_TransactionID" Type="OutArgument(String):io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):in_QueueItem (ui:QueueItem):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+
+
+
+
+
+Create_Vx_Link
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):in_Patient_ID (String):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Create_Vx_Patient_Record
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Create_WellSky_Profile_Record
+--------------------------------------------------------------------------
+Arguments
+in_TransactionItem (SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+WellSky\WellSky_Login
+
+
+
+
+
+DataTable_Output_to_Excel
+--------------------------------------------------------------------------
+Arguments
+in_DataTableIn (DataTable):in_FileName (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+
+
+
+
+
+Determine_Phone_Type
+--------------------------------------------------------------------------
+Arguments
+strRow (String):io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+
+
+
+
+
+Email_Referral
+--------------------------------------------------------------------------
+Arguments
+io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):in_TransactionItem (scg1:SortedDictionary(String, Object)):in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Email_Referral_Exception
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Evaluate_Search_Results
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):in_PatientStatusLookup (scg1:Dictionary(String, scg1:List(Object))):io_dsPatientSearchResult" Type="InOutArgument(DataSet):in_SearchType (String):
+
+Calls
+Utilities\Capture_Metric
+Vx\Validate_Search_Results
+Vx/Evaluate_Single_Search_Result
+
+
+
+
+
+Evaluate_Single_Search_Result
+--------------------------------------------------------------------------
+Arguments
+in_PatientStatusLookup (Dictionary(String, List(Object))):strStatusQualifier" Type="InOutArgument(String):in_dsPatientSearchResult (DataSet):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Vx\Validate_Search_Results
+Vx/Evaluate_Single_Search_Result
+Notifications\Create_Vx_Link
+
+
+
+
+
+Excel_Read_Table_into_DataTable
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):out_DataTable" Type="OutArgument(DataTable):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Excel_Read_Table_MultiColumn_Dictionary
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):out_Programs" Type="OutArgument(DataTable):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Excel_Read_Table_to_Dictionary
+--------------------------------------------------------------------------
+Arguments
+DataDictionary" Type="OutArgument(Dictionary(String, Object)):FilePath (String):
+
+Calls
+Utilities\Send_Text
+Utilities\Outlook_Send_Message
+
+
+
+
+
+Exception_Send_Email
+--------------------------------------------------------------------------
+Arguments
+in_Exception (Exception):in_Config (Dictionary(String, Object)):in_TransactionItem (DataRow):in_WorkflowName (String):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+
+
+
+
+
+Extract_Document_Updates
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem (SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+
+
+
+
+
+Extract_Referral_Comments
+--------------------------------------------------------------------------
+Arguments
+out_Comment_Count" Type="OutArgument(Int32):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+
+
+
+
+
+Extract_Referral_Data
+--------------------------------------------------------------------------
+Arguments
+in_ProgramLookup (Dictionary(String, List(String))):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):in_PlantLookup (Dictionary(String, String)):in_Config (Dictionary(String, Object)):in_RelationshipLookup (Dictionary(String, Int32)):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+
+
+
+
+
+Extract_Referral_Documents
+--------------------------------------------------------------------------
+Arguments
+out_Document_Count" Type="OutArgument(Int32):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+
+
+
+
+
+Gather_Queue_Items
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+Allscripts\Gather_Allscripts_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Documents
+Allscripts\Extract_Referral_Comments
+Allscripts\Navigate_to_Homepage
+
+
+
+
+
+Gather_Referrals
+--------------------------------------------------------------------------
+Arguments
+out_Referrals" Type="OutArgument(DataTable):in_Config (Dictionary(String, Object)):in_TableMetadata (String):in_MultiPage (Boolean):in_SortOrder (String):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+Allscripts\Gather_Allscripts_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Documents
+Allscripts\Extract_Referral_Comments
+Allscripts\Navigate_to_Homepage
+
+
+
+
+
+Get_App_Credentials
+--------------------------------------------------------------------------
+Arguments
+out_Username" Type="OutArgument(String):in_Credential (String):out_Password" Type="OutArgument(sSecureString):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+
+
+
+
+
+Get_Patient_Ribbon
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Get_Transaction_Data
+--------------------------------------------------------------------------
+Arguments
+in_TransactionNumber (Int32):in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):out_Patient_Name" Type="OutArgument(String):out_TransactionID" Type="OutArgument(String):out_Portal_Code" Type="OutArgument(String):out_Referral_ID" Type="OutArgument(String):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+Framework/Create_Transaction_Item
+
+
+
+
+
+Global_Handler
+--------------------------------------------------------------------------
+Arguments
+errorInfo (uico:ExceptionHandlerArgs)">:   <Property.Attributes>:    <RequiredArgumentAttribute />:   </Property.Attributes>:  </Property>:result" Type="OutArgument(uico:ErrorAction)">:   <Property.Attributes>:    <RequiredArgumentAttribute />:   </Property.Attributes>:  </Property>:
+
+Calls
+Framework\Init_All_Applications
+
+
+
+
+
+Init_All_Applications
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+Framework/Create_Transaction_Item
+Allscripts\Allscripts_Open
+WellSky\WellSky_Login
+Notifications\Skype_Open
+
+
+
+
+
+Init_All_Settings
+--------------------------------------------------------------------------
+Arguments
+in_ConfigSheets (String[]):out_Config" Type="OutArgument(Dictionary(String, Object)):out_ProgramLookup" Type="OutArgument(Dictionary(String, List(String))):out_Relationships" Type="OutArgument(Dictionary(String, Int32)):out_PatientStatusLookup" Type="OutArgument(Dictionary(String, List(Object))):out_PlantLookup" Type="OutArgument(Dictionary(String, String)):in_ConfigFilePath (String):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+Framework/Create_Transaction_Item
+Allscripts\Allscripts_Open
+WellSky\WellSky_Login
+Notifications\Skype_Open
+Framework\Kill_All_Processes
+Utilities\Create_Metric_Dictionary
+Lookup\Store_Relationship_Lookup
+Lookup/Store_Patient_Status_Lookup
+Lookup\Store_Program_Lookup
+Lookup\Store_Plant_Lookup
+
+
+
+
+
+Kill_All_Processes
+--------------------------------------------------------------------------
+Arguments
+in_ProcessesToKill (String):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+Framework/Create_Transaction_Item
+Allscripts\Allscripts_Open
+WellSky\WellSky_Login
+Notifications\Skype_Open
+Framework\Kill_All_Processes
+Utilities\Create_Metric_Dictionary
+Lookup\Store_Relationship_Lookup
+Lookup/Store_Patient_Status_Lookup
+Lookup\Store_Program_Lookup
+Lookup\Store_Plant_Lookup
+
+
+
+
+
+Look_Up_Plant_Data
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_SendingOrg (String):in_PlantLookup (Dictionary(String, String)):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Look_Up_Program_Data
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_SiteName (String):in_ProgramLookup (Dictionary(String, List(String))):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Main
+--------------------------------------------------------------------------
+Arguments
+in_strOrchestrator_Queue_Name (String):in_Environment (String):in_DataFilePathRoot (String):
+
+Calls
+Framework\Init_All_Applications
+Framework\Init_All_Settings
+Framework\Kill_All_Processes
+Utilities\Send_Text
+Allscripts\Gather_Queue_Items
+Framework\Get_Transaction_Data
+Process
+Framework\Set_Transaction_Status
+Framework\Close_All_Applications
+
+
+
+
+
+Navigate_to_Combine
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_TransactionItem (scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+Allscripts\Gather_Allscripts_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Documents
+Allscripts\Extract_Referral_Comments
+Allscripts\Navigate_to_Homepage
+
+
+
+
+
+Navigate_to_Detail
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+Allscripts\Gather_Allscripts_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Documents
+Allscripts\Extract_Referral_Comments
+Allscripts\Navigate_to_Homepage
+
+
+
+
+
+Navigate_to_Homepage
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+Allscripts\Gather_Allscripts_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Documents
+Allscripts\Extract_Referral_Comments
+Allscripts\Navigate_to_Homepage
+
+
+
+
+
+Process
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_ProgramLookup (Dictionary(String, List(String))):in_PatientName (String):in_RelationshipLookup (Dictionary(String, Int32)):in_RootPath (String):io_TransactionItem" Type="InOutArgument(scg1:SortedDictionary(String, Object)):in_PatientStatusLookup (Dictionary(String, List(Object))):in_PlantLookup (Dictionary(String, String)):io_BusinessRuleException" Type="InOutArgument(ui:BusinessRuleException):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):in_MetricsPath (String):in_ReferralID (String):
+
+Calls
+Framework\Init_All_Applications
+Framework\Init_All_Settings
+Framework\Kill_All_Processes
+Utilities\Send_Text
+Allscripts\Gather_Queue_Items
+Framework\Get_Transaction_Data
+Process
+Framework\Set_Transaction_Status
+Framework\Close_All_Applications
+Utilities\Capture_Metric
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Data
+Vx\Search_for_Vx_Patient
+Allscripts\Combine_Documents
+Allscripts\Navigate_to_Homepage
+Allscripts\Create_Face_Sheet_PDF
+Vx\Create_Vx_Patient_Record
+WellSky\Create_WellSky_Profile_Record
+Vx\Vx_PatientID_Add_to_Queue
+Vx\Vx_Document_Addition
+Notifications\Get_Patient_Ribbon
+Notifications\Create_Vx_Link
+Notifications\Create_Email_Body
+Notifications\Create_Email_Subject
+Notifications\Email_Referral
+Notifications\Email_Referral_Exception
+Notifications\Skype_Referral
+Utilities/Export_Metrics
+Allscripts\Add_Comment_Updates
+
+
+
+
+
+Run_Main_Development
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Framework\Init_All_Applications
+Framework\Init_All_Settings
+Framework\Kill_All_Processes
+Utilities\Send_Text
+Allscripts\Gather_Queue_Items
+Framework\Get_Transaction_Data
+Process
+Framework\Set_Transaction_Status
+Framework\Close_All_Applications
+Utilities\Capture_Metric
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Data
+Vx\Search_for_Vx_Patient
+Allscripts\Combine_Documents
+Allscripts\Navigate_to_Homepage
+Allscripts\Create_Face_Sheet_PDF
+Vx\Create_Vx_Patient_Record
+WellSky\Create_WellSky_Profile_Record
+Vx\Vx_PatientID_Add_to_Queue
+Vx\Vx_Document_Addition
+Notifications\Get_Patient_Ribbon
+Notifications\Create_Vx_Link
+Notifications\Create_Email_Body
+Notifications\Create_Email_Subject
+Notifications\Email_Referral
+Notifications\Email_Referral_Exception
+Notifications\Skype_Referral
+Utilities/Export_Metrics
+Allscripts\Add_Comment_Updates
+Main
+
+
+
+
+
+Run_Main_Development_TD
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Framework\Init_All_Applications
+Framework\Init_All_Settings
+Framework\Kill_All_Processes
+Utilities\Send_Text
+Allscripts\Gather_Queue_Items
+Framework\Get_Transaction_Data
+Process
+Framework\Set_Transaction_Status
+Framework\Close_All_Applications
+Utilities\Capture_Metric
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Data
+Vx\Search_for_Vx_Patient
+Allscripts\Combine_Documents
+Allscripts\Navigate_to_Homepage
+Allscripts\Create_Face_Sheet_PDF
+Vx\Create_Vx_Patient_Record
+WellSky\Create_WellSky_Profile_Record
+Vx\Vx_PatientID_Add_to_Queue
+Vx\Vx_Document_Addition
+Notifications\Get_Patient_Ribbon
+Notifications\Create_Vx_Link
+Notifications\Create_Email_Body
+Notifications\Create_Email_Subject
+Notifications\Email_Referral
+Notifications\Email_Referral_Exception
+Notifications\Skype_Referral
+Utilities/Export_Metrics
+Allscripts\Add_Comment_Updates
+Main
+
+
+
+
+
+RunAllTests
+--------------------------------------------------------------------------
+Arguments
+TestLogFile (String):OutputExcel (String):
+
+Calls
+[row(&quot;WorkflowFile&quot;).ToString]
+
+
+
+
+
+Search_for_Vx_Patient
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):in_Config (scg1:Dictionary(String, Object)):in_PatientStatusLookup (scg1:Dictionary(String, scg1:List(Object))):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+Vx\Validate_Search_Results
+Vx/Evaluate_Single_Search_Result
+Notifications\Create_Vx_Link
+Vx\Evaluate_Search_Results
+
+
+
+
+
+Set_Transaction_Status
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_SystemError (Exception):in_BusinessRuleException (ui:BusinessRuleException):in_TransactionItem (ui:QueueItem):io_RetryNumber" Type="InOutArgument(Int32):io_TransactionNumber" Type="InOutArgument(Int32):in_TransactionField1 (String):in_TransactionField2 (String):in_TransactionID (String):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+Framework/Create_Transaction_Item
+Allscripts\Allscripts_Open
+WellSky\WellSky_Login
+Notifications\Skype_Open
+Framework\Kill_All_Processes
+Utilities\Create_Metric_Dictionary
+Lookup\Store_Relationship_Lookup
+Lookup/Store_Patient_Status_Lookup
+Lookup\Store_Program_Lookup
+Lookup\Store_Plant_Lookup
+Framework\Take_Screenshot
+Framework\Close_All_Applications
+
+
+
+
+
+Skype_Close
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Skype_Open
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Skype_Referral
+--------------------------------------------------------------------------
+Arguments
+io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):in_TransactionItem (scg1:SortedDictionary(String, Object)):in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Notifications\Skype_Open
+
+
+
+
+
+Store_Patient_Status_Lookup
+--------------------------------------------------------------------------
+Arguments
+out_PatientStatusLookup" Type="OutArgument(Dictionary(String, List(Object))):in_ConfigFilePath (String):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Store_Plant_Lookup
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):out_dictPlantLookup" Type="OutArgument(Dictionary(String, String)):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Store_Program_Lookup
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):out_dictProgramLookup" Type="OutArgument(Dictionary(String, List(String))):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Store_Relationship_Lookup
+--------------------------------------------------------------------------
+Arguments
+out_Relationships" Type="OutArgument(Dictionary(String, Int32)):in_ConfigFilePath (String):
+
+Calls
+Utilities\Capture_Metric
+
+
+
+
+
+Take_Screenshot
+--------------------------------------------------------------------------
+Arguments
+io_FilePath (String):
+
+Calls
+Allscripts\Allscripts_Close
+WellSky\WellSky_Close
+Notifications\Skype_Close
+Utilities\Outlook_Send_Message
+Utilities\Send_Text
+Framework/Create_Transaction_Item
+Allscripts\Allscripts_Open
+WellSky\WellSky_Login
+Notifications\Skype_Open
+Framework\Kill_All_Processes
+Utilities\Create_Metric_Dictionary
+Lookup\Store_Relationship_Lookup
+Lookup/Store_Patient_Status_Lookup
+Lookup\Store_Program_Lookup
+Lookup\Store_Plant_Lookup
+Framework\Take_Screenshot
+Framework\Close_All_Applications
+
+
+
+
+
+TEST_Allscripts_Close
+--------------------------------------------------------------------------
+Arguments
+in_Config" Type="InOutArgument(Dictionary(String, Object)):in_Environment (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+
+
+
+
+
+Test_Allscripts_Open
+--------------------------------------------------------------------------
+Arguments
+in_Config" Type="InOutArgument(Dictionary(String, Object)):in_Environment (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+
+
+
+
+
+TEST_Allscripts_Open_TD
+--------------------------------------------------------------------------
+Arguments
+in_Config" Type="InOutArgument(Dictionary(String, Object)):in_Environment (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+
+
+
+
+
+TEST_BRException_Send_Email
+--------------------------------------------------------------------------
+Arguments
+in_TransactionItem (SortedDictionary(String, Object)):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+
+
+
+
+
+TEST_Combine_Documents
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+
+
+
+
+
+TEST_Comment_and_Doc_Count
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+
+
+
+
+
+TEST_Create_Email_Body
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+
+
+
+
+
+TEST_Create_Face_Sheet_PDF
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+
+
+
+
+
+TEST_Create_Vx_Patient_Record
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+
+
+
+
+
+TEST_Date_Conversion
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+
+
+
+
+
+TEST_Email_Referral
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+
+
+
+
+
+TEST_Excel_Read
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+
+
+
+
+
+TEST_Extract_Referral_Data
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+
+
+
+
+
+TEST_Gather_Allscripts_Referrals
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+
+
+
+
+
+TEST_Gather_Queue_Items
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+
+
+
+
+
+TEST_Get_Patient_Ribbon
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+
+
+
+
+
+TEST_Get_Transaction_Data
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+
+
+
+
+
+TEST_InitAllSettings
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+
+
+
+
+
+TEST_Look_Up_Program_Data
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+
+
+
+
+
+TEST_Navigate_to_Combine
+--------------------------------------------------------------------------
+Arguments
+in_Config" Type="InOutArgument(Dictionary(String, Object)):in_Environment (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+
+
+
+
+
+TEST_Navigate_to_Detail
+--------------------------------------------------------------------------
+Arguments
+in_Config" Type="InOutArgument(Dictionary(String, Object)):in_Environment (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+
+
+
+
+
+TEST_ONE_Search_for_Vx_Patient
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+
+
+
+
+
+TEST_Parallel
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+.QA/TEST_Parallel_2
+.QA/TEST_Parallel_1
+
+
+
+
+
+TEST_Parallel_1
+--------------------------------------------------------------------------
+Arguments
+strExtractOutputFileName" Type="InOutArgument(String):in_Config (Dictionary(String, Object)):dictPlantLookup (Dictionary(String, String)):dictProgramLookup (Dictionary(String, List(String))):dictRelationshipLookup (Dictionary(String, Int32)):strReferralID" Type="InOutArgument(String):strPatientName" Type="InOutArgument(String):dictTransactionItem" Type="InOutArgument(Dictionary(String, Object)):tblReferralData" Type="InOutArgument(DataTable):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):io_BrowserIndex (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+.QA/TEST_Parallel_2
+.QA/TEST_Parallel_1
+
+
+
+
+
+TEST_Parallel_2
+--------------------------------------------------------------------------
+Arguments
+strExtractOutputFileName" Type="InOutArgument(String):in_Config (Dictionary(String, Object)):dictPlantLookup (Dictionary(String, String)):dictProgramLookup (Dictionary(String, List(String))):dictRelationshipLookup (Dictionary(String, Int32)):strReferralID" Type="InOutArgument(String):strPatientName" Type="InOutArgument(String):dictTransactionItem" Type="InOutArgument(Dictionary(String, Object)):tblReferralData" Type="InOutArgument(DataTable):io_Metrics" Type="InOutArgument(Dictionary(String, DateTime)):io_BrowserIndex (String):
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+.QA/TEST_Parallel_2
+.QA/TEST_Parallel_1
+
+
+
+
+
+TEST_Patient_Reference_for_Email
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Extract_Arguments
+_Test_plus_Open_Apps
+_Test
+Allscripts\Gather_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Comments
+Allscripts\Extract_Referral_Documents
+Allscripts\Navigate_to_Homepage
+Process
+Utilities\Export_Metrics
+Allscripts\Allscripts_Close
+Allscripts\Allscripts_Open
+Utilities\BRException_send_email
+Allscripts\Combine_Documents
+Notifications\Create_Email_Body
+Notifications\Email_Referral
+Allscripts\Create_Face_Sheet_PDF
+Allscripts\Extract_Referral_Data
+Vx\Create_Vx_Patient_Record
+Utilities\Excel_Read_Table_into_DataTable
+Utilities/Output_Datatable_to_Text_File
+Allscripts\Gather_Queue_Items
+Vx\Search_for_Vx_Patient
+Vx\Vx_Document_Addition
+WellSky\Create_WellSky_Profile_Record
+Vx\Email_Referral_Exception
+Framework\Get_Transaction_Data
+Lookup\Store_Program_Lookup
+Lookup\Look_Up_Program_Data
+Allscripts\Navigate_to_Combine
+.QA/TEST_Parallel_2
+.QA/TEST_Parallel_1
+Vx\Patient_Reference_for_Email
+
+
+
+
+
+Updated_Referral_Check
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_LastLogMinute" Type="InOutArgument(String):out_NewReferral" Type="OutArgument(Boolean):out_UpdatedReferral" Type="OutArgument(Boolean):
+
+Calls
+Utilities\Capture_Metric
+Framework\Get_App_Credentials
+Allscripts\Navigate_to_Combine
+Allscripts\Combined_Doc_Request
+Allscripts\Combined_Doc_Verify_Completed
+Allscripts\Combined_Doc_Download
+Utilities\Parse_Address
+Utilities\Parse_Name
+Lookup\Look_Up_Program_Data
+Lookup\Look_Up_Plant_Data
+Allscripts/Determine_Phone_Type
+Allscripts\Gather_Allscripts_Referrals
+Utilities\Trim_and_Remove_New_Lines
+Allscripts\Navigate_to_Detail
+Allscripts\Extract_Referral_Documents
+Allscripts\Extract_Referral_Comments
+Allscripts\Navigate_to_Homepage
+Allscripts\Gather_Referrals
+Utilities\Select_Rows_by_Filter
+Allscripts\Allscripts_UI_Error_Handling
+
+
+
+
+
+Validate_Search_Results
+--------------------------------------------------------------------------
+Arguments
+in_TransactionItem (SortedDictionary(String, Object)):io_dsPatientSearchResult" Type="InOutArgument(DataSet):in_SearchType (String):
+
+Calls
+Utilities\Capture_Metric
+Vx\Validate_Search_Results
+Vx/Evaluate_Single_Search_Result
+Notifications\Create_Vx_Link
+Vx\Evaluate_Search_Results
+
+
+
+
+
+Vx_Document_Addition
+--------------------------------------------------------------------------
+Arguments
+io_TransactionItem" Type="InOutArgument(SortedDictionary(String, Object)):io_Metrics" Type="InOutArgument(scg1:Dictionary(String, DateTime)):
+
+Calls
+Utilities\Capture_Metric
+Vx\Validate_Search_Results
+Vx/Evaluate_Single_Search_Result
+Notifications\Create_Vx_Link
+Vx\Evaluate_Search_Results
+
+
+
+
+
+Vx_PatientID_Add_to_Queue
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):in_TransactionItem (scg1:SortedDictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+Vx\Validate_Search_Results
+Vx/Evaluate_Single_Search_Result
+Notifications\Create_Vx_Link
+Vx\Evaluate_Search_Results
+
+
+
+
+
+WellSky_Close
+--------------------------------------------------------------------------
+Arguments
+n/a
+
+Calls
+Utilities\Capture_Metric
+WellSky\WellSky_Login
+
+
+
+
+
+WellSky_Login
+--------------------------------------------------------------------------
+Arguments
+in_Config (Dictionary(String, Object)):
+
+Calls
+Utilities\Capture_Metric
+WellSky\WellSky_Login
+Framework\Get_App_Credentials
+
+
+
+

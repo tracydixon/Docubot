@@ -1,0 +1,598 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process_File" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" 	
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 	
+xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" 	
+xmlns:s="clr-namespace:System;assembly=mscorlib" 	
+xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" 	
+xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" 	
+xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" 	
+xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" 	
+xmlns:sd="clr-namespace:System.Data;assembly=System.Data" 	
+xmlns:ui="http://schemas.uipath.com/workflow/activities" 	
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_masterOutput" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_file" Type="InArgument(x:String)" />
+    <x:Property Name="in_rootFolder" Type="InArgument(x:String)" />
+    <x:Property Name="io_calls" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>693.6,1412.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_File_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Orchestrator.Client</x:String>
+      <x:String>UiPath.Orchestrator.Client.Models</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Mail.IMAP.Activities</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.POP3.Activities</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OrchestratorClient</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Process_File" sap:VirtualizedContainerService.HintSize="375.2,1348" sap2010:WorkflowViewState.IdRef="Sequence_59">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="tempTable" />
+      <Variable x:TypeArguments="x:String" Name="description" />
+      <Variable x:TypeArguments="x:String" Name="currentVariable" />
+      <Variable x:TypeArguments="x:String" Name="currentArgument" />
+      <Variable x:TypeArguments="x:Int32" Name="nextLinePosition" />
+      <Variable x:TypeArguments="sd:DataTable" Name="TROUBLESHOOTING_master" />
+      <Variable x:TypeArguments="x:String" Name="fileFormatted" />
+      <Variable x:TypeArguments="x:String" Name="callStringsAll" />
+      <Variable x:TypeArguments="x:String" Name="textString" />
+      <Variable x:TypeArguments="s:String[]" Name="linesArray" />
+      <Variable x:TypeArguments="x:Int32" Name="lineNumber" />
+      <Variable x:TypeArguments="x:Int32" Name="rowNumber" />
+      <Variable x:TypeArguments="sd:DataRow" Name="workflowRow" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log start" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Process_File started.&quot;]" />
+    <Assign DisplayName="Assign file name" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_94">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[fileFormatted]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_file.Replace(in_rootFolder + "\","").Replace(".xaml","")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Add header to Calls" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_95">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[callStringsAll]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["Calls" + vbNewLine]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Read lines" sap:VirtualizedContainerService.HintSize="333.6,277.6" sap2010:WorkflowViewState.IdRef="Sequence_51">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ReadTextFile Content="[textString]" DisplayName="Read file" FileName="[in_file]" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="ReadTextFile_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ReadTextFile>
+      <Assign DisplayName="Split file into lines" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_96">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:String[]">[linesArray]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:String[]">[textString.Split(CChar(chr(10)))]</InArgument>
+        </Assign.Value>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </Assign>
+      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[lineNumber]" DisplayName="Review lines" sap:VirtualizedContainerService.HintSize="433.6,184.8" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[linesArray]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="x:String">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:String" Name="strLine" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Gather data" sap:VirtualizedContainerService.HintSize="241.6,364.8" sap2010:WorkflowViewState.IdRef="Sequence_50">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="Find or create workflow row" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[io_masterOutput]" DisplayName="Lookup workflow name row" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_5" LookupColumnName="WorkflowName" LookupValue="[fileFormatted]" RowIndex="[rowNumber]" />
+                <If Condition="[rowNumber &lt; 0]" DisplayName="Add row if not there" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_45">
+                  <If.Then>
+                    <Sequence DisplayName="Add row and get row index" sap:VirtualizedContainerService.HintSize="222,208" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{fileFormatted}]" DataTable="[io_masterOutput]" DisplayName="Add new row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
+                      <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[io_masterOutput]" DisplayName="Lookup workflow name row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_6" LookupColumnName="WorkflowName" LookupValue="[fileFormatted]" RowIndex="[rowNumber]" />
+                    </Sequence>
+                  </If.Then>
+                </If>
+                <Assign DisplayName="Assign relevant workflow row" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_97">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="sd:DataRow">[workflowRow]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="sd:DataRow">[io_masterOutput.Rows(rowNumber)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+              <If Condition="[Instr(strLine, &quot;WorkflowFileName=&quot;) &gt; 0 AND Instr(strLine, &quot;Invoke&quot;) &gt; 0]" DisplayName="Handle calls" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="If_46">
+                <If.Then>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Calls workflow" sap:VirtualizedContainerService.HintSize="314,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Document_File\Get_Calls.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_calls">[io_calls]</InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_line">[strLine]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_workflowName">[fileFormatted]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </If.Then>
+              </If>
+              <If Condition="[Instr(strLine, &quot;&lt;Throw DisplayName&quot;) &gt; 0]" DisplayName="Handle exceptions" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="If_47">
+                <If.Then>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Exceptions workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Document_File\Get_Exceptions.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_line">[strLine]</InArgument>
+                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_workflowRow">[workflowRow]</InOutArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                </If.Then>
+              </If>
+              <If Condition="[Instr(linesArray(lineNumber) , &quot;&lt;x:Members&gt;&quot;) &gt; 0]" DisplayName="Handle arguments" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="If_50">
+                <If.Then>
+                  <Sequence DisplayName="Get arguments" sap:VirtualizedContainerService.HintSize="304,340" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Increment next line" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_98">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[nextLinePosition]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[lineNumber + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <While DisplayName="Get arguments section" sap:VirtualizedContainerService.HintSize="483.2,219.2" sap2010:WorkflowViewState.IdRef="While_6" Condition="[Instr(linesArray(nextLinePosition) , &quot;&lt;/x:Members&gt;&quot;) = 0]">
+                      <Sequence DisplayName="Add new line to argument" sap:VirtualizedContainerService.HintSize="524.8,441.6" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[Instr(linesArray(nextLinePosition), &quot;Property Name&quot;) &gt; 0]" DisplayName="Add arguments" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_48">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Assign DisplayName="Get next line" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_99">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[currentArgument]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[currentArgument + linesArray(nextLinePosition)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Then>
+                        </If>
+                        <Assign DisplayName="Increment line" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_100">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[nextLinePosition]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[nextLinePosition + 1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </While>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Arguments workflow" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Document_File\Get_Arguments.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_workflowRow">[workflowRow]</InOutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_line">[currentArgument]</InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <If Condition="[workflowRow(&quot;Arguments&quot;).ToString = (&quot;Arguments&quot; + chr(10))]" DisplayName="Update all arguments with n/a" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="If_49">
+                      <If.Then>
+                        <Assign DisplayName="Add header to arguments" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_101">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[workflowRow("Arguments")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[workflowRow("Arguments").ToString + "n/a" + vbNewLine]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </If.Then>
+              </If>
+              <If Condition="[Instr(linesArray(lineNumber) , &quot;.Variables&gt;&quot;) &gt; 0 and Instr(linesArray(lineNumber) , &quot;&lt;/&quot;) = 0]" DisplayName="Handle variables until the last line of the section" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_53">
+                <If.Then>
+                  <Sequence DisplayName="Get variables" sap:VirtualizedContainerService.HintSize="304,340" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign DisplayName="Increment next line" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_102">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[nextLinePosition]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[lineNumber + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <While DisplayName="Get variables section" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="While_7" Condition="[Instr(linesArray(nextLinePosition).tostring, &quot;.Variables&gt;&quot;) = 0 AND Instr(linesArray(nextLinePosition).tostring, &quot;&lt;/&quot;) = 0]">
+                      <Sequence DisplayName="Add new line to variable" sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[Instr(linesArray(nextLinePosition), &quot;Variable x:TypeArguments&quot;) &gt; 0]" DisplayName="Add variables" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="If_51">
+                          <If.Then>
+                            <Assign DisplayName="Get next line" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_103">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[currentVariable]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[currentVariable + linesArray(nextLinePosition)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Then>
+                        </If>
+                        <Assign DisplayName="Increment line" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_104">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[nextLinePosition]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[nextLinePosition + 1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </While>
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Variables workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Document_File\Get_Variables.xaml">
+                      <ui:InvokeWorkflowFile.Arguments>
+                        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_workflowRow">
+                          <mva:VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="workflowRow" />
+                        </InOutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_line">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="currentVariable" />
+                        </InArgument>
+                      </ui:InvokeWorkflowFile.Arguments>
+                    </ui:InvokeWorkflowFile>
+                    <If Condition="[workflowRow(&quot;Variables&quot;).ToString = (&quot;Variables&quot; + chr(10))]" DisplayName="Update all variables with n/a" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="If_52">
+                      <If.Then>
+                        <Assign DisplayName="Add header to variables" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_105">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[workflowRow("Variables")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[workflowRow("Variables").ToString + "n/a" + vbNewLine]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+      </ui:ForEach>
+    </Sequence>
+    <Sequence DisplayName="Find or create workflow row" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Sequence_53">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[io_masterOutput]" DisplayName="Lookup workflow name row" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_7" LookupColumnName="WorkflowName" LookupValue="[fileFormatted]" RowIndex="[rowNumber]" />
+      <If Condition="[rowNumber &lt; 0]" DisplayName="Add row if not there" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_54">
+        <If.Then>
+          <Sequence DisplayName="Add row and get row index" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_52">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{fileFormatted}]" DataTable="[io_masterOutput]" DisplayName="Add new row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_7" />
+            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[io_masterOutput]" DisplayName="Lookup workflow name row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="LookupDataTable_8" LookupColumnName="WorkflowName" LookupValue="[fileFormatted]" RowIndex="[rowNumber]" />
+          </Sequence>
+        </If.Then>
+      </If>
+      <Assign DisplayName="Assign relevant workflow row" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_106">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataRow">[workflowRow]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataRow">[io_masterOutput.Rows(rowNumber)]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Description workflow" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Document_File\Get_Description.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_workflow">[workflowRow]</InOutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_description">[description]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_text">[textString]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Logs workflow" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Document_File\Get_Logs.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_workflow">[workflowRow]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_text">[textString]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_Dictionary_Calls workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Document_File\Get_Dictionary_Calls.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_text">[textString]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_workflowRow">[workflowRow]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <Sequence DisplayName="Update calls" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Sequence_56">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="callStringsText" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_60">
+            <ui:OutputDataTable DataTable="[tblCalls]" DisplayName="Output calls" sap:VirtualizedContainerService.HintSize="242,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[callStringsText]" />
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_61">
+            <ui:WriteTextFile DisplayName="Write Text File" FileName="[in_outputFolder + &quot;\Calls_Table.txt&quot;]" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[callStringsText]" />
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+      <Assign DisplayName="Create temp table" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_107">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[tempTable]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[io_calls]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get all workflow call rows" DisplayName="Invoke Select_Rows_by_Filter workflow" sap:VirtualizedContainerService.HintSize="242,78" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="- Archive\Select_Rows_by_Filter.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_selectCriteria">["WorkflowName = '" + fileFormatted + "'"]</InArgument>
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dataTable">[tempTable]</InOutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:InvokeWorkflowFile>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_62">
+            <If Condition="[tempTable isNOT nothing]" DisplayName="Log call results" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_55">
+              <If.Then>
+                <ui:LogMessage DisplayName="Log call results" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[&quot;Rows for workflow &quot; + fileFormatted + &quot;: &quot; + tempTable.Rows.Count.tostring]" />
+              </If.Then>
+              <If.Else>
+                <ui:LogMessage DisplayName="Log call results" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[&quot;Rows for workflow &quot; + fileFormatted + &quot;: 0&quot;]" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+      <If Condition="[tempTable isNOT nothing]" DisplayName="Sort and add calls" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_57">
+        <If.Then>
+          <Sequence DisplayName="Sort and add calls" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_55">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="Calls" DataTable="[tempTable]" DisplayName="Sort by call" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SortDataTable_4" Order="Ascending" OutputDataTable="[tempTable]" SortOrder="Ascending" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[tempTable]" DisplayName="Iterate through calls" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                  </ActivityAction.Argument>
+                  <If Condition="[Instr(callStringsAll, row(&quot;Calls&quot;).ToString) = 0]" DisplayName="Add calls to the list" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_56">
+                    <If.Then>
+                      <Assign DisplayName="Update all calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_114">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[callStringsAll]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[callStringsAll + row("Calls").ToString + vbNewLine]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </If.Then>
+                  </If>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </If.Then>
+      </If>
+      <If Condition="[callStringsAll = (&quot;Calls&quot; + vbNewLine)]" DisplayName="Update calls with n/a" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="If_58">
+        <If.Then>
+          <Assign DisplayName="Add header to calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_109">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[workflowRow("Calls")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Object">["Calls" + vbNewLine + "n/a" + vbNewLine]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+      </If>
+      <Assign DisplayName="Assign calls" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_110">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:Object">[workflowRow("Calls")]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:Object">[callStringsAll]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <If Condition="[len(workflowRow(&quot;Arguments&quot;).ToString) = 0]" DisplayName="Update arguments with n/a" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="If_59">
+      <If.Then>
+        <Assign DisplayName="Add header to arguments" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_111">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Object">[workflowRow("Arguments")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">["Arguments" + vbNewLine  + "n/a" + vbNewLine]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <If Condition="[workflowRow(&quot;Exceptions&quot;).ToString = (&quot;Exceptions&quot; + vbNewLine)]" DisplayName="Update exceptions with n/a" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="If_60">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Sequence_58">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="Sequence_57">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+          <Assign DisplayName="Add header to exceptions" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_112">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Object">[workflowRow("Exceptions")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">["Exceptions" + vbNewLine  + "n/a" + vbNewLine]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+    </If>
+    <If Condition="[workflowRow(&quot;BR_Exceptions&quot;).ToString = &quot;Business Rule Exceptions&quot; + vbNewLine]" DisplayName="Update br exceptions with n/a" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="If_61">
+      <If.Then>
+        <Assign DisplayName="Add header to br exceptions" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_113">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Object">[workflowRow("BR_Exceptions")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">["Business Rule Exceptions" + vbNewLine + "n/a" + vbNewLine]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_63">
+          <ui:LogMessage DisplayName="Log completion" sap:VirtualizedContainerService.HintSize="242,51" sap2010:WorkflowViewState.IdRef="LogMessage_41" Level="Info" Message="[&quot;COMPLETED review of &quot; + fileFormatted]" />
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log end" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Process_File ended.&quot;]" />
+  </Sequence>
+</Activity>
