@@ -3,11 +3,11 @@
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
-    "Library_Legacy": "[1.0.2]",
-    "UiPath.Excel.Activities": "[2.12.3]",
-    "UiPath.Mail.Activities": "[1.15.2]",
-    "UiPath.System.Activities": "[21.10.5]",
-    "UiPath.UIAutomation.Activities": "[21.10.6]"
+    "Library_Legacy": "1.0.9",
+    "UiPath.Excel.Activities": "2.16.1",
+    "UiPath.Mail.Activities": "1.18.2",
+    "UiPath.System.Activities": "22.10.4",
+    "UiPath.UIAutomation.Activities": "22.10.4"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -28,7 +28,8 @@
     "executionType": "Workflow",
     "readyForPiP": false,
     "startsInPiP": false,
-    "mustRestoreAllDependencies": false
+    "mustRestoreAllDependencies": false,
+    "pipType": "ChildSession"
   },
   "designOptions": {
     "projectProfile": "Developement",

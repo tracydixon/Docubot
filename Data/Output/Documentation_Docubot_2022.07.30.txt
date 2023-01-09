@@ -1,0 +1,719 @@
+﻿~Process
+--------------------------------------------------------------------------
+Description
+Check each xaml file in the solution to determine which files it calls and which files it is called by.
+
+Arguments
+in_rootPath, In_Argument(String)
+in_source, In_Argument(String)
+in_outputPath, In_Argument(String)
+in_excludeQA, In_Argument(Boolean)
+in_config, In_Argument(Dictionary(String, Object))
+
+Variables
+String, cDrive
+String, processName
+String, outputTestFile
+String, outputRefFile
+String, outputFile
+String, masterOutputPath
+String, issueFile
+String, callsOutput
+Int32, rowIndex
+Int32, column
+DataTable, references
+DataTable, masterOutputTable
+DataTable, calls
+DataTable, issues
+
+Calls
+File_Handling\Select_Main_Folder
+File_Handling\Read_All_SubFolders
+File_Handling\Add_All_Workflows
+Document_File\Get_Called_By
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Argument Dictionary References
+n/a
+
+Log Start Entry
+Process started.
+
+Log End Entry
+Process ended.
+
+Document_File\Find_Issues
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Arguments
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Called_By
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Calls
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Description
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Dictionary_Calls
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Exceptions
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Logs
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Document_File\Get_Variables
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+File_Handling\Add_All_Workflows
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+File_Handling\Process_File
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+File_Handling\Process_Folder
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+File_Handling\Read_All_SubFolders
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+File_Handling\Select_Main_Folder
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
+
+Global_Handler
+--------------------------------------------------------------------------
+Description
+Global handler that takes care of errors across the full process.
+
+Arguments
+out_result, Out_Argument(ErrorAction)
+in_errorInfo, In_Argument(ExceptionHandlerArgs)
+
+Variables
+Int32, retryCount
+String, mailSubject
+String, mailBody
+String, failedActivity
+String, exceptionDescription
+String, errorMessage
+Int32, maxRetries
+Int32, beepCount
+Exception, exception
+Dictionary(String, Object), Default=[New Dictionary(Of String, Object)], config
+
+Calls
+Exception_Handling\Exception_Send_Email
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Variable Dictionary References
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start Entry
+Global_Handler started.
+
+Log End Entry
+Global_Handler ended.
+
+Main
+--------------------------------------------------------------------------
+Description
+Documents automation created in the directory provided, using XAML files.
+
+Arguments
+n/a
+
+Variables
+String, rootPath
+String, sourceRootPath
+String, ProceedString
+String, outputFolder
+Dictionary(String, Object), config
+Boolean, excludeQA
+
+Calls
+Process
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Variable Dictionary References
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start Entry
+Main started.
+
+Log End Entry
+Main ended.
+
+Process
+--------------------------------------------------------------------------
+Description
+Check each xaml file in the solution to determine which files it calls and which files it is called by.
+
+Arguments
+in_rootPath, In_Argument(String)
+in_source, In_Argument(String)
+in_outputPath, In_Argument(String)
+in_excludeQA, In_Argument(Boolean)
+in_config, In_Argument(Dictionary(String, Object))
+
+Variables
+String, cDrive
+String, processName
+String, outputTestFile
+String, outputRefFile
+String, outputFile
+String, masterOutputPath
+String, issueFile
+String, callsOutput
+Int32, rowIndex
+Int32, column
+DataTable, references
+DataTable, masterOutputTable
+DataTable, calls
+DataTable, issues
+
+Calls
+File_Handling\Select_Main_Folder
+File_Handling\Read_All_SubFolders
+File_Handling\Add_All_Workflows
+Document_File\Get_Called_By
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Argument Dictionary References
+n/a
+
+Log Start Entry
+Process started.
+
+Log End Entry
+Process ended.
+
+Utilities\Trim_and_Remove_New_Lines
+--------------------------------------------------------------------------
+Description
+n/a
+
+Arguments
+n/a
+
+Variables
+n/a
+
+Calls
+n/a
+
+Called By
+n/a
+
+Exceptions
+n/a
+
+Business Rule Exceptions
+n/a
+
+Var Dictionary Calls
+n/a
+
+Arg Dictionary Calls
+n/a
+
+Log Start
+n/a
+
+Log End
+n/a
